@@ -1,0 +1,35 @@
+.sidebar {
+  width: 5%;
+}
+
+.navigation {
+  padding: $base-padding * 2 0;
+
+  &-section {
+    background-color: $color-dark-alt;
+    text-align: center;
+    padding: $base-padding * 2;
+    border-radius: 5rem;
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &-icon {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: $grey-dark-3;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.25);
+      color: $color-secondary;
+    }
+
+    &.active {
+      color: $color-secondary;
+      transform: scale(1.2);
+    }
+  }
+}

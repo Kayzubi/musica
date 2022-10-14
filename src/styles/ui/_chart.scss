@@ -1,0 +1,60 @@
+.chart {
+  height: 50vh;
+  width: 30%;
+  overflow: hidden;
+  &-card {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: $color-dark-alt;
+    margin-bottom: 2rem;
+    border-radius: $base-border-radius * 2;
+    padding: $base-padding $base-padding * 2;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-img {
+    border-radius: $base-border-radius * 2;
+    width: 5rem;
+    overflow: hidden;
+  }
+
+  &-name {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+  &-user {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+  &-duration {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  &-like {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    outline: none;
+    border: 1px solid $color-secondary;
+    border-radius: 50%;
+    padding: $base-padding;
+    color: $color-secondary;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-light;
+    }
+  }
+}

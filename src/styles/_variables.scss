@@ -1,0 +1,40 @@
+//font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Colors
+$color-dark: #1d2123;
+$color-dark-alt: #1a1e1f;
+$color-light: #efeee0;
+$color-primary: #a4c7c6;
+$color-primary-alt: #a4c7c6;
+$color-primary-alt-2: #609eaf;
+$color-secondary: #facd66;
+$color-error: #d32752;
+$color-success: #1ac886;
+$grey-dark: #777;
+$grey-dark-2: #999;
+$grey-dark-3: #333;
+
+// spacing
+$base-padding: 0.75rem;
+$base-margin: 0.75rem;
+
+// borders
+$base-border-thickness: 1px;
+$base-border-radius: 0.5rem;
+
+// box-shadow
+$base-box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.15);
+
+// font sizes
+$base-font-size: 1.2rem;
+$font-size-sm: $base-font-size * 0.75;
+$font-size-lg: $base-font-size * 1.5;
+$font-size-xl: $base-font-size * 2.5;
+$font-size-xxl: $base-font-size * 4;
+
+// grid
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 2rem;
+$gutter-horizontal: 3rem;

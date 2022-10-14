@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  gap: 5rem;
+  padding: $base-padding * 2 $base-padding * 3;
+}
+
+.logo {
+  &-box {
+    font-size: 2rem;
+    position: relative;
+  }
+
+  &-icon {
+    position: absolute;
+
+    &-1 {
+      top: -8px;
+      left: -8px;
+      color: $color-secondary;
+    }
+
+    &-2 {
+      color: $color-primary-alt;
+    }
+  }
+}
+
+.searchbar {
+  background-color: $color-dark-alt;
+  border-radius: $base-border-radius * 2;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: $base-padding $base-padding * 2;
+  width: 40%;
+  color: $grey-dark-3;
+
+  input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: inherit;
+    color: $color-light;
+  }
+}

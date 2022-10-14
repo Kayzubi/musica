@@ -1,0 +1,52 @@
+.list {
+  margin-top: 5rem;
+  &-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &-container {
+    width: 100%;
+  }
+  &-h {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-bottom: 1.5rem;
+
+    &:hover {
+      overflow-x: scroll;
+    }
+
+    &::-webkit-scrollbar {
+      height: 0.9rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba($grey-dark-3, $alpha: 0.5);
+    }
+    .list-item {
+      width: 15rem;
+      display: inline-block;
+      margin-right: 3rem;
+    }
+  }
+
+  .music {
+    &-img {
+      width: 100%;
+      border-radius: $base-border-radius * 5;
+    }
+    &-name {
+      font-size: 1.4rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+    &-artist {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+  }
+}
