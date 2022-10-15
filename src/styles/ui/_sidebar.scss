@@ -16,20 +16,23 @@
   }
 
   &-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
     color: $grey-dark-3;
     cursor: pointer;
     transition: all 0.2s;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    display: block;
 
     &:hover {
       transform: scale(1.25);
       color: $color-secondary;
     }
-
-    &.active {
-      color: $color-secondary;
-      transform: scale(1.2);
-    }
+  }
+  .active {
+    @extend .navigation-icon;
+    color: $color-secondary;
   }
 }

@@ -1,15 +1,15 @@
-.home {
+.main {
   display: flex;
   gap: 2rem;
   padding: $base-padding * 2 $base-padding * 3;
   position: relative;
 }
 
-.main {
+.home {
   width: 95%;
 }
 .hero {
-  @extend .home;
+  @extend .main;
 
   &__main {
     background-color: $color-primary-alt-2;

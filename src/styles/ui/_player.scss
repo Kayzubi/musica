@@ -44,23 +44,28 @@
     text-align: center;
   }
 
+  &__buttons {
+    margin: auto;
+    display: block;
+  }
   &-btn {
     background-color: transparent;
     outline: none;
     border: none;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: $color-light;
     padding: $base-padding;
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     text-align: center;
+    display: inline-block;
+    cursor: pointer;
     &:not(:last-child) {
       margin-right: 3rem;
     }
 
     &-play {
-      font-size: 2rem;
       background-color: $color-secondary;
     }
   }
@@ -76,7 +81,7 @@
       background: rgba(255, 255, 255, 0.2);
       border-radius: 5px;
       background-image: linear-gradient($color-secondary, $color-secondary);
-      background-size: 20%;
+      background-size: 10%;
       background-repeat: no-repeat;
     }
 
@@ -115,14 +120,6 @@
 
     input[type='range']::-webkit-slider-thumb {
       -webkit-appearance: none;
-      // position: relative;
-      // height: 15px;
-      // width: 15px;
-      // border-radius: 50%;
-      // background: $color-secondary;
-      // cursor: ew-resize;
-      // box-shadow: 0 0 2px 0 #555;
-      // transition: background 0.3s ease-in-out;
     }
 
     input[type='range']::-webkit-slider-runnable-track {
