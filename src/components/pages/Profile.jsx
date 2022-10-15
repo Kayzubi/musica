@@ -1,5 +1,11 @@
+import AnimatedDiv from '../shared/AnimatedDiv'
+
 function Profile() {
-  return <div>Profile</div>
+  return (
+    <AnimatedDiv>
+      <h1>Profile</h1>
+    </AnimatedDiv>
+  )
 }
 
 export default Profile

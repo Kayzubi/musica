@@ -12,7 +12,12 @@ function Header() {
       </div>
       <div className='searchbar'>
         <IoIosSearch />
-        <input type='text' name='search' id='search' />
+        <input
+          type='text'
+          name='search'
+          id='search'
+          placeholder='search artist'
+        />
       </div>
     </header>
   )
