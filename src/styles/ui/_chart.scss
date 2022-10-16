@@ -11,16 +11,11 @@
     border-radius: $base-border-radius * 2;
     padding: $base-padding $base-padding * 2;
     position: relative;
-
-    img {
-      width: 100%;
-    }
   }
 
   &-img {
     border-radius: $base-border-radius * 2;
     width: 5rem;
-    overflow: hidden;
   }
 
   &-name {
@@ -28,7 +23,7 @@
     font-weight: 300;
     margin-bottom: 0.5rem;
   }
-  &-user {
+  &-author {
     font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
@@ -46,6 +41,9 @@
     transform: translateY(-50%);
     background-color: transparent;
     outline: none;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
     border: 1px solid $color-secondary;
     border-radius: 50%;
     padding: $base-padding;

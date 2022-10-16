@@ -1,9 +1,6 @@
 .sidebar {
-  width: 5%;
-}
-
-.navigation {
   padding: $base-padding * 2 0;
+  width: 5%;
 
   &-section {
     background-color: $color-dark-alt;
@@ -32,7 +29,7 @@
     }
   }
   .active {
-    @extend .navigation-icon;
+    @extend .sidebar-icon;
     color: $color-secondary;
   }
 }

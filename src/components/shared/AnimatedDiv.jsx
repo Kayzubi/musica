@@ -5,7 +5,9 @@ function AnimatedDiv({ children }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}>
+      exit={{ opacity: 0 }}
+      transition={{ opacity: { duration: 1 } }}
+      className='content'>
       {children}
     </motion.div>
   )

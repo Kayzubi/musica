@@ -1,8 +1,10 @@
+import srcImage from './assets/Rectangle 26.png'
+
 function PlayerNowplaying() {
   return (
     <div className='player__now-playing'>
       <img
-        src='assets/Rectangle 26.png'
+        src={srcImage}
         alt='now playing'
         className='player__now-playing-img'
       />

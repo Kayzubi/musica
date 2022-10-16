@@ -1,4 +1,5 @@
-import { IoIosMusicalNotes, IoIosSearch } from 'react-icons/io'
+import { IoIosMusicalNotes } from 'react-icons/io'
+import Searchbar from './Searchbar'
 function Header() {
   return (
     <header className='header'>
@@ -10,15 +11,7 @@ function Header() {
           <IoIosMusicalNotes />
         </div>
       </div>
-      <div className='searchbar'>
-        <IoIosSearch />
-        <input
-          type='text'
-          name='search'
-          id='search'
-          placeholder='search artist'
-        />
-      </div>
+      <Searchbar />
     </header>
   )
 }

@@ -36,11 +36,16 @@ function PlayerButtons() {
         {buttons.map((btn) => {
           if (btn.function === 'play') {
             return (
-              <button className='player-btn player-btn-play'>{btn.icon}</button>
+              <button key={btn.function} className='player-btn player-btn-play'>
+                {btn.icon}
+              </button>
             )
-          } else {
-            return <button className='player-btn'>{btn.icon}</button>
           }
+          return (
+            <button key={btn.function} className='player-btn'>
+              {btn.icon}
+            </button>
+          )
         })}
       </div>
       <PlayerSeek />
