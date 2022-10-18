@@ -3,19 +3,22 @@ import Header from './components/Header'
 import Player from './components/Player'
 import Sidebar from './components/Sidebar'
 import AnimatedRoutes from './components/AnimatedRoutes'
+import { MusicContextProvider } from './contexts/MusicContext'
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className='container'>
-        <Header />
-        <div className='main'>
-          <Sidebar />
-          <AnimatedRoutes />
+    <MusicContextProvider>
+      <BrowserRouter>
+        <div className='container'>
+          <Header />
+          <div className='main'>
+            <Sidebar />
+            <AnimatedRoutes />
+          </div>
+          <Player />
         </div>
-        <Player />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </MusicContextProvider>
   )
 }
 

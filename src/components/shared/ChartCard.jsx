@@ -1,8 +1,9 @@
 import { IoIosHeartEmpty } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 
 function ChartCard({ image, name, author, duration }) {
   return (
-    <div className='chart-card'>
+    <Link to={`/chart/${name}`} className='chart-card'>
       <img src={image} alt='cover art' className='chart-img' />
       <div className='chart-details'>
         <h4 className='chart-name'>{name}</h4>
@@ -12,7 +13,7 @@ function ChartCard({ image, name, author, duration }) {
           <IoIosHeartEmpty />
         </button>
       </div>
-    </div>
+    </Link>
   )
 }
 

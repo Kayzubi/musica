@@ -11,7 +11,7 @@ export const chartList = [
     srcImage: afro,
   },
   {
-    name: `Top 10 Africa`,
+    name: `Top10 Africa`,
     author: 'Dj YK mule',
     duration: '1:3:27',
     srcImage: goldenAge,
@@ -26,56 +26,70 @@ export const chartList = [
 
 export const newReleases = [
   {
+    id: 1,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 2,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 3,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 4,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 5,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 6,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 7,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 8,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 9,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
-    title: 'Life in a buble',
-    artist: 'The van',
-    srcImage: van,
-  },
-  {
+    id: 10,
+
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
@@ -84,56 +98,61 @@ export const newReleases = [
 
 export const popular = [
   {
+    id: 1,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 2,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 3,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 4,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 5,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 6,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 7,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 8,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
+    id: 9,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
   },
   {
-    title: 'Life in a buble',
-    artist: 'The van',
-    srcImage: van,
-  },
-  {
+    id: 10,
     title: 'Life in a buble',
     artist: 'The van',
     srcImage: van,
