@@ -5,16 +5,17 @@ function TrackList({ listname, listdata }) {
     <div className='list'>
       <h2 className='list-title'>{listname}</h2>
       <div className='list-h'>
-        {listdata.map((item) => {
-          return (
-            <TrackCard
-              key={item.id}
-              image={item.srcImage}
-              name={item.title}
-              artist={item.artist}
-            />
-          )
-        })}
+        {listdata &&
+          listdata.data.map((item) => {
+            return (
+              <TrackCard
+                key={item.id}
+                image={item.album.cover_medium}
+                name={item.title}
+                artist={item.artist.name}
+              />
+            )
+          })}
       </div>
     </div>
   )

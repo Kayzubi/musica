@@ -30,7 +30,14 @@
     .list-item {
       width: 15rem;
       display: inline-block;
-      margin-right: 3rem;
+      margin-right: 4rem;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:hover > .music-name {
+        transform: translateX(100%);
+        animation: text-scroll 5s linear infinite;
+      }
     }
   }
 
