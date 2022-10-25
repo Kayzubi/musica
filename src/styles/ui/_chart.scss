@@ -1,67 +1,115 @@
-.chart {
-  height: 50vh;
-  width: 30%;
-  overflow: hidden;
-  &-card {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    background-color: $color-dark-alt;
+.section {
+  &:not(:last-child) {
     margin-bottom: 2rem;
-    border-radius: $base-border-radius * 2;
-    padding: $base-padding $base-padding * 2;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s;
+  }
+  padding: $base-padding $base-padding * 8;
 
-    &:hover {
-      transform: translateY(-5px);
+  &-info {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-end;
+    font-weight: 300;
+  }
+}
+
+.playlist {
+  &-img {
+    width: 20rem;
+    border-radius: $base-border-radius * 5;
+  }
+  &-name {
+    margin-bottom: 1.5rem;
+    color: $color-primary-alt;
+  }
+
+  &-description,
+  &-stat {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &-buttons {
+    margin: 3rem 0 1rem;
+    display: flex;
+  }
+
+  &-btn {
+    background-color: $color-dark;
+    padding: $base-padding $base-padding * 2;
+    border-radius: 10rem;
+    border: none;
+    color: $color-light;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 1rem;
     }
-    &:active {
-      transform: translateY(-2px);
-    }
+  }
+}
+.btn-like {
+  color: $color-error;
+  font-size: 1.5rem;
+  background-color: $color-dark;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  border-radius: 50%;
+  text-align: center;
+  padding: $base-padding;
+  border: none;
+}
+
+.song {
+  width: 100%;
+  margin: 1rem auto;
+  padding: $base-padding * 2;
+  border-radius: $base-border-radius * 3;
+  background-color: $color-dark-alt;
+  font-weight: 300;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-align: left;
+  display: table;
+  transition: all 0.2s;
+  &.playing {
+    background-color: rgba($color-secondary, 0.6);
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+  &:active {
+    transform: translateY(-2px);
   }
 
   &-img {
-    border-radius: $base-border-radius * 2;
-    width: 5rem;
+    width: 5%;
   }
 
-  &-name {
-    font-size: 1.4rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
+  &-options {
+    color: $color-secondary;
+    text-align: right;
   }
-  &-author {
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
+  &-type {
+    width: 20%;
   }
   &-duration {
-    font-size: 1rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
+    width: 20%;
+  }
+  &-title {
+    width: 40%;
+  }
+  &-like {
+    font-size: 2rem;
+    width: 5%;
   }
 
-  &-like {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    outline: none;
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.2rem;
-    border: 1px solid $color-secondary;
-    border-radius: 50%;
-    padding: $base-padding;
-    color: $color-secondary;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $color-secondary;
-      color: $color-light;
-    }
+  & > * {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 1rem;
   }
 }

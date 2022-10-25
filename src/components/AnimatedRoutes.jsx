@@ -10,7 +10,7 @@ function AnimatedRoutes() {
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home />} />
-        <Route path='/chart/:title' element={<Chart />} />
+        <Route path='/chart/:id' element={<Chart />} />
         <Route path='/collections' element={<Collection />} />
       </Routes>
     </AnimatePresence>

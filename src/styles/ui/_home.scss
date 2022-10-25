@@ -2,7 +2,7 @@
   display: flex;
   gap: 2rem;
   padding: $base-padding * 2 $base-padding * 3;
-  position: relative;
+  // position: relative;
 }
 
 .hero {
@@ -11,7 +11,6 @@
   &__main {
     background-color: $color-primary-alt-2;
     height: 50vh;
-    width: 70%;
     border-radius: $base-border-radius * 5;
     padding: $base-padding * 2 $base-padding * 3;
     position: relative;
@@ -22,7 +21,6 @@
       position: absolute;
       right: 0;
       bottom: 0;
-      // transform: scale(1.25);
       z-index: 2;
     }
     &-vector {
@@ -47,6 +45,74 @@
     }
     &-small {
       font-size: 1.4rem;
+    }
+  }
+}
+
+.chart {
+  height: 50vh;
+  width: 30%;
+  overflow: hidden;
+  &-card {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: $color-dark-alt;
+    margin-bottom: 1rem;
+    border-radius: $base-border-radius * 2;
+    padding: $base-padding $base-padding * 2;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+    &:active {
+      transform: translateY(-2px);
+    }
+  }
+
+  &-img {
+    border-radius: $base-border-radius * 2;
+    width: 5rem;
+  }
+
+  &-name {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+  &-author {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+  &-duration {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  &-like {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    outline: none;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    border: 1px solid $color-secondary;
+    border-radius: 50%;
+    padding: $base-padding;
+    color: $color-secondary;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-light;
     }
   }
 }

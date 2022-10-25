@@ -4,7 +4,6 @@ import Player from './components/Player'
 import Sidebar from './components/Sidebar'
 import AnimatedRoutes from './components/AnimatedRoutes'
 import { MusicContextProvider } from './contexts/MusicContext'
-
 function App() {
   return (
     <MusicContextProvider>

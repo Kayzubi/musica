@@ -1,10 +1,16 @@
 import ChartCard from './shared/ChartCard'
 import { useContext } from 'react'
 import MusicContext from '../contexts/MusicContext'
+import Spinner from './shared/Spinner'
 function ChartList() {
-  const { chartData } = useContext(MusicContext)
+  const { chartData, isLoading } = useContext(MusicContext)
 
-  return (
+  return isLoading ? (
+    <div className='chart'>
+      <h2 className='list-title'>Top chart</h2>
+      <Spinner size={'medium'} />
+    </div>
+  ) : (
     <div className='chart'>
       <h2 className='list-title'>Top chart</h2>
       {chartData &&
