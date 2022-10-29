@@ -21,6 +21,7 @@
     display: flex;
     align-items: center;
     gap: 2rem;
+    width: 20%;
     &-img {
       width: 5rem;
       border-radius: $base-border-radius * 2;
@@ -35,10 +36,18 @@
         transform: translateX(100%);
         animation: text-scroll 5s linear infinite;
         white-space: nowrap;
+        &.skeleton {
+          min-height: 28px;
+          border-radius: 4px;
+        }
       }
       .artist {
         font-weight: 300;
         font-size: 1.2rem;
+        &.skeleton {
+          min-height: 28px;
+          border-radius: 4px;
+        }
       }
     }
   }
@@ -137,4 +146,19 @@
       background: transparent;
     }
   }
+}
+
+.skeleton {
+  background-color: #e2e5e7;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 40px 100%;
+  background-repeat: no-repeat;
+  background-position: left -40px top 0;
+  -webkit-animation: shine 1s ease infinite;
+  animation: shine 1s ease infinite;
 }

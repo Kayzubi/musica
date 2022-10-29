@@ -13,33 +13,35 @@ import MusicContext from '../contexts/MusicContext'
 function Player() {
   const {
     currentTrack,
-    trackQueue,
-    trackIndex,
     isPlaying,
     isRepeat,
     isShuffled,
     playPauseTrack,
     toggleShuffle,
+    toggleRepeat,
+    nextTrack,
+    previousTrack,
   } = useContext(MusicContext)
 
-  const audio = new Audio(currentTrack)
-
-  useEffect(() => {
-    playTrack()
-  }, [currentTrack])
-
-  const playTrack = () => {
-    audio.play()
-  }
+  const [volume, setVolume] = useState(50)
 
   return (
     <div className='player'>
       <div className='container'>
+        <audio
+          id='audio-player'
+          src={currentTrack && currentTrack.preview}></audio>
         <div className='player__now-playing'>
-          <img src='' alt='' className='player__now-playing-img' />
+          <img
+            src={currentTrack && currentTrack.album.cover}
+            alt=''
+            className='player__now-playing-img'
+          />
           <div className='player__now-playing-details'>
-            <p className='title'>Made in Lagos </p>
-            <div className='artist'>Wizkid </div>
+            <p className='title'> {currentTrack && currentTrack.title}</p>
+            <div className='artist'>
+              {currentTrack && currentTrack.artist.name}
+            </div>
           </div>
         </div>
         <div className='player__controls'>
@@ -49,7 +51,7 @@ function Player() {
               className={isShuffled ? `player-btn active` : `player-btn`}>
               <IoIosShuffle />
             </button>
-            <button className='player-btn'>
+            <button onClick={previousTrack} className='player-btn'>
               <IoIosSkipBackward />
             </button>
             <button
@@ -57,10 +59,12 @@ function Player() {
               className='player-btn player-btn-play'>
               {isPlaying ? <IoIosPause /> : <IoIosPlay />}
             </button>
-            <button className='player-btn'>
+            <button onClick={nextTrack} className='player-btn'>
               <IoIosSkipForward />
             </button>
-            <button className='player-btn'>
+            <button
+              onClick={toggleRepeat}
+              className={isRepeat ? `player-btn active` : `player-btn`}>
               <IoIosRepeat />
             </button>
           </div>

@@ -10,29 +10,18 @@ export const MusicContextProvider = ({ children }) => {
   const [afroBeats, setAfrobeats] = useState()
   const [isLoading, setisLoading] = useState(true)
   const [currentTrack, setCurrentTrack] = useState()
-  const [trackIndex, setTrackIndex] = useState(0)
+  const [trackIndex, setTrackIndex] = useState()
   const [trackQueue, setTrackQueue] = useState()
-  const [isRepeat, setRepeat] = useState()
+  const [audioPlayer, setAudioPlayer] = useState(
+    document.createElement('audio')
+  )
+  const [isRepeat, setRepeat] = useState(false)
   const [isPlaying, setPlaying] = useState(false)
   const [isShuffled, setShuffled] = useState(false)
 
   const fetchData = async (url) => {
     const data = await (await fetch(`/${url}`)).json()
     return data
-  }
-
-  const toggleShuffle = () => {
-    isShuffled ? setShuffled(false) : setShuffled(true)
-  }
-
-  const playPauseTrack = () => {
-    isPlaying ? setPlaying(false) : setPlaying(true)
-  }
-
-  const loadTrack = (track, playlist) => {
-    setCurrentTrack(track.preview)
-    setTrackQueue(playlist.data)
-    console.log(currentTrack, trackQueue)
   }
 
   useEffect(() => {
@@ -51,7 +40,77 @@ export const MusicContextProvider = ({ children }) => {
     }
 
     runData()
+    setAudioPlayer(document.querySelector('#audio-player'))
   }, [])
+
+  const toggleRepeat = () => {
+    if (isRepeat) {
+      setRepeat(false)
+      audioPlayer.loop = false
+    } else {
+      setRepeat(true)
+      audioPlayer.loop = true
+    }
+  }
+
+  const toggleShuffle = () => {
+    isShuffled ? setShuffled(false) : setShuffled(true)
+  }
+
+  const playPauseTrack = () => {
+    if (!isPlaying && currentTrack === undefined) {
+      console.log('Nothing to play')
+    } else if (!isPlaying) {
+      playTrack()
+    } else {
+      pauseTrack()
+    }
+  }
+
+  const playTrack = () => {
+    audioPlayer.play()
+    setPlaying(true)
+  }
+
+  const pauseTrack = () => {
+    audioPlayer.pause()
+    setPlaying(false)
+  }
+
+  const nextTrack = () => {
+    if (isShuffled) {
+      const random = Math.floor(Math.random() * trackQueue.length)
+      setTrackIndex(random)
+    } else {
+      setTrackIndex((prevState) =>
+        prevState < trackQueue.length - 1 ? prevState + 1 : 0
+      )
+    }
+    setCurrentTrack(trackQueue[trackIndex])
+  }
+
+  const previousTrack = () => {
+    setTrackIndex((prevState) =>
+      prevState === 0 ? trackQueue.length - 1 : prevState - 1
+    )
+    setCurrentTrack(trackQueue[trackIndex])
+  }
+
+  audioPlayer.onended = () => {
+    nextTrack()
+  }
+
+  const loadTrack = (track, playlist) => {
+    setTrackQueue(playlist)
+    let index = playlist.findIndex((item) => {
+      return item.id === track.id
+    })
+    setTrackIndex(index)
+    setCurrentTrack(track)
+    audioPlayer.onloadedmetadata = () => {
+      playTrack()
+    }
+  }
 
   return (
     <MusicContext.Provider
@@ -62,6 +121,7 @@ export const MusicContextProvider = ({ children }) => {
         afroBeats,
         isLoading,
         chartDetails,
+        audioPlayer,
         currentTrack,
         trackIndex,
         trackQueue,
@@ -71,13 +131,16 @@ export const MusicContextProvider = ({ children }) => {
         setPlaying,
         setRepeat,
         setShuffled,
-        setCurrentTrack,
         setTrackIndex,
         setTrackQueue,
         setChartDetails,
+        setCurrentTrack,
+        loadTrack,
         playPauseTrack,
         toggleShuffle,
-        loadTrack,
+        toggleRepeat,
+        nextTrack,
+        previousTrack,
         fetchData,
       }}>
       {children}

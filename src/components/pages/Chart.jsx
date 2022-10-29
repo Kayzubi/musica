@@ -56,7 +56,9 @@ function Chart() {
       </section>
       <section className='section section-songs'>
         {chartDetails.tracks.data.map((track) => {
-          return <Song key={track.id} data={track} />
+          return (
+            <Song key={track.id} data={track} playlist={chartDetails.tracks} />
+          )
         })}
       </section>
     </AnimatedDiv>

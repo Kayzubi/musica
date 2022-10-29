@@ -22,3 +22,14 @@
     transform: translateX(-100%);
   }
 }
+
+@-webkit-keyframes shine {
+  to {
+    background-position: right -40px top 0;
+  }
+}
+@keyframes shine {
+  to {
+    background-position: right -40px top 0;
+  }
+}

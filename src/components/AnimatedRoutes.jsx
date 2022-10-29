@@ -2,6 +2,8 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Chart from './pages/Chart'
 import Collection from './pages/Collection'
+import Likes from './pages/Likes'
+import MyCollections from './pages/MyCollections'
 import { AnimatePresence } from 'framer-motion'
 
 function AnimatedRoutes() {
@@ -11,7 +13,10 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home />} />
         <Route path='/chart/:id' element={<Chart />} />
-        <Route path='/collections' element={<Collection />} />
+        <Route path='/collections' element={<Collection />}>
+          <Route path='mycollections' element={<MyCollections />} />
+          <Route path='likes' element={<Likes />} />
+        </Route>
       </Routes>
     </AnimatePresence>
   )

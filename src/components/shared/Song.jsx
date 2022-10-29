@@ -1,16 +1,20 @@
 import { HiOutlineHeart, HiDotsVertical } from 'react-icons/hi'
+import MusicContext from '../../contexts/MusicContext'
+import { useContext } from 'react'
 
-function Song({ data }) {
+function Song({ data, playlist }) {
   const { title, album, artist, type, duration } = data
   const munites = Math.floor(duration / 60)
   const seconds = duration % 60
+
+  const { loadTrack } = useContext(MusicContext)
 
   function padTo2Digits(num) {
     return num.toString().padStart(2, '0')
   }
 
   return (
-    <div className='song'>
+    <div className='song' onClick={() => loadTrack(data, playlist.data)}>
       <div className='song-img'>
         <img src={album.cover} alt='' />
       </div>
