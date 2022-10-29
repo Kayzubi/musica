@@ -14,8 +14,8 @@ function AnimatedRoutes() {
         <Route path='/'>
           <Route index element={<Home />} />
           <Route path='/chart/:id' element={<Chart />} />
-          <Route path='/collections' element={<Collection />}>
-            <Route path='mycollection' element={<MyCollection />} />
+          <Route path='/mycollections' element={<Collection />}>
+            <Route index element={<MyCollection />} />
             <Route path='likes' element={<Likes />} />
           </Route>
         </Route>

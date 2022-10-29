@@ -9,50 +9,29 @@ import { HiHome } from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
 
 function Sidebar() {
-  const navApp = [
-    ['Home', '/', <HiHome />],
-    ['My Collection', '/collections', <IoIosMusicalNotes />],
-    ['Radio', '', <IoMdRadio />],
-    ['Videos', '', <IoIosFilm />],
-  ]
-
-  const navPersonal = [
-    ['Profile', <IoIosPerson />],
-    ['Logout', <IoIosLogOut />],
-  ]
-
   return (
     <div className='sidebar'>
       <div className='sidebar-section'>
-        {navApp.map(([title, path, icon]) => {
-          if (path === '') {
-            return (
-              <button disabled key={title} className='sidebar-icon'>
-                {icon}
-              </button>
-            )
-          }
-          return (
-            <NavLink
-              key={title}
-              to={path}
-              end
-              className={({ isActive }) =>
-                isActive ? 'active' : 'sidebar-icon'
-              }>
-              {icon}
-            </NavLink>
-          )
-        })}
+        <NavLink end className='sidebar-icon' to='/'>
+          <HiHome />
+        </NavLink>
+        <NavLink className='sidebar-icon' to='/mycollections'>
+          <IoIosMusicalNotes />
+        </NavLink>
+        <button disabled='disabled' className='sidebar-icon'>
+          <IoMdRadio />
+        </button>
+        <button disabled='disabled' className='sidebar-icon'>
+          <IoIosFilm />
+        </button>
       </div>
       <div className='sidebar-section'>
-        {navPersonal.map(([title, icon]) => {
-          return (
-            <button disabled key={title} className='sidebar-icon'>
-              {icon}
-            </button>
-          )
-        })}
+        <button disabled className='sidebar-icon'>
+          <IoIosPerson />
+        </button>
+        <button disabled className='sidebar-icon'>
+          <IoIosLogOut />
+        </button>
       </div>
     </div>
   )

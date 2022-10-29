@@ -27,9 +27,8 @@
       transform: scale(1.25);
       color: $color-secondary;
     }
-  }
-  .active {
-    @extend .sidebar-icon;
-    color: $color-secondary;
+    &.active {
+      color: $color-secondary;
+    }
   }
 }

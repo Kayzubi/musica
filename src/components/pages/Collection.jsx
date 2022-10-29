@@ -5,7 +5,7 @@ function Collection() {
   return (
     <AnimatedDiv>
       <h1>My collection</h1>
-      <Link to='mycollection'>My Collection</Link>
+      <Link to='/mycollections'>My Collection</Link>
       <Link to='likes'>Likes</Link>
       <Outlet />
     </AnimatedDiv>
