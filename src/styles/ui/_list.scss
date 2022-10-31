@@ -27,33 +27,31 @@
       border-radius: 10px;
       background-color: rgba($grey-dark-3, $alpha: 0.5);
     }
-    .list-item {
-      width: 15rem;
-      display: inline-block;
-      margin-right: 4rem;
-      overflow: hidden;
-      cursor: pointer;
+  }
+}
 
-      &:hover > .music-name {
-        transform: translateX(100%);
-        animation: text-scroll 5s linear infinite;
-      }
-    }
+.music {
+  width: 15rem;
+  display: inline-block;
+  margin-right: 4rem;
+  overflow: hidden;
+  cursor: pointer;
+  &-img {
+    width: 100%;
+    border-radius: $base-border-radius * 5;
+  }
+  &-name {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+  &-artist {
+    font-size: 1.2rem;
+    font-weight: 300;
   }
 
-  .music {
-    &-img {
-      width: 100%;
-      border-radius: $base-border-radius * 5;
-    }
-    &-name {
-      font-size: 1.4rem;
-      font-weight: 300;
-      margin-bottom: 0.5rem;
-    }
-    &-artist {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
+  &:hover > .music-name {
+    transform: translateX(100%);
+    animation: text-scroll 5s linear infinite;
   }
 }

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import CollectionData from './Collection'
 
 const MusicContext = createContext()
 
@@ -19,6 +20,15 @@ export const MusicContextProvider = ({ children }) => {
   const [isPlaying, setPlaying] = useState(false)
   const [isShuffled, setShuffled] = useState(false)
 
+  const {
+    myCollection,
+    myLikes,
+    addToCollection,
+    addToLikes,
+    deleteFromCollection,
+    deleteFromLikes,
+  } = CollectionData()
+
   const fetchData = async (url) => {
     const data = await (await fetch(`/${url}`)).json()
     return data
@@ -26,7 +36,7 @@ export const MusicContextProvider = ({ children }) => {
 
   useEffect(() => {
     async function runData() {
-      setChartData(await fetchData('chart/0/playlists?index=0&limit=3'))
+      setChartData(await fetchData('chart/0/playlists?index=0&limit=5'))
       setTopSongs(
         await fetchData('playlist/1362516565/tracks?index=0&limit=15')
       )
@@ -115,19 +125,25 @@ export const MusicContextProvider = ({ children }) => {
   return (
     <MusicContext.Provider
       value={{
+        audioPlayer,
         chartData,
         topSongs,
         globalHits,
         afroBeats,
         isLoading,
         chartDetails,
-        audioPlayer,
         currentTrack,
         trackIndex,
         trackQueue,
         isPlaying,
         isRepeat,
         isShuffled,
+        myCollection,
+        myLikes,
+        addToCollection,
+        addToLikes,
+        deleteFromCollection,
+        deleteFromLikes,
         setPlaying,
         setRepeat,
         setShuffled,

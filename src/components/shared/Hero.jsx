@@ -14,7 +14,7 @@ function Hero() {
             <div className='hero__heading'>
               <h1 className='hero__heading-primary'>R & B Hits</h1>
               <p className='hero__heading-small'>
-                All mine, Lie again, Petty call me everyday, Out of time, No
+                Sexy love, Exchange, Stuck on you, Let Me Love you, MAd, No
                 love, Bad habit, and so much more
               </p>
             </div>

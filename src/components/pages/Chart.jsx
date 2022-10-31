@@ -8,7 +8,13 @@ import Spinner from '../shared/Spinner'
 import BackgroundImage from '../BackgroundImage'
 
 function Chart() {
-  const { chartDetails, setChartDetails, fetchData } = useContext(MusicContext)
+  const {
+    chartDetails,
+    setChartDetails,
+    fetchData,
+    loadTrack,
+    addToCollection,
+  } = useContext(MusicContext)
   const params = useParams()
   const [isLoading, setLoading] = useState(true)
 
@@ -42,10 +48,16 @@ function Chart() {
             </span>
           </p>
           <div className='playlist-buttons'>
-            <button className='playlist-btn btn-play-all'>
+            <button
+              onClick={() =>
+                loadTrack(chartDetails.tracks.data[0], chartDetails.tracks.data)
+              }
+              className='playlist-btn btn-play-all'>
               <HiPlay color='#facd66' /> Play All
             </button>
-            <button className='playlist-btn btn-collection'>
+            <button
+              onClick={() => addToCollection(chartDetails)}
+              className='playlist-btn btn-collection'>
               <HiOutlineViewGridAdd color='#facd66' /> Add to collection
             </button>
             <button className='btn-like'>
