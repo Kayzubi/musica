@@ -6,10 +6,6 @@ function MyCollections() {
   const { myCollection, deleteFromCollection } = useContext(MusicContext)
   const data = myCollection
 
-  useEffect(() => {
-    console.log(data)
-  }, [])
-
   return (
     <div>
       {data.length === 0 ? (
@@ -22,7 +18,13 @@ function MyCollections() {
       ) : (
         <>
           {data.map((album) => {
-            return <CollectionCard key={album.id} data={album.data} />
+            return (
+              <CollectionCard
+                key={album.id}
+                data={album.data}
+                remove={deleteFromCollection}
+              />
+            )
           })}
         </>
       )}

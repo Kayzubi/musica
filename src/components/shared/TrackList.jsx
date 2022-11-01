@@ -15,7 +15,9 @@ function TrackList({ listname, listdata }) {
         <div className='list-h'>
           {listdata &&
             listdata.data.map((item) => {
-              return <TrackCard key={item.id} data={item} playlist={listdata} />
+              return (
+                <TrackCard key={item.id} data={item} playlist={listdata.data} />
+              )
             })}
         </div>
       )}

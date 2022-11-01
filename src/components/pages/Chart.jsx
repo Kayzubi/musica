@@ -13,6 +13,8 @@ function Chart() {
     setChartDetails,
     fetchData,
     loadTrack,
+    myCollection,
+    deleteFromCollection,
     addToCollection,
   } = useContext(MusicContext)
   const params = useParams()
@@ -55,14 +57,21 @@ function Chart() {
               className='playlist-btn btn-play-all'>
               <HiPlay color='#facd66' /> Play All
             </button>
-            <button
-              onClick={() => addToCollection(chartDetails)}
-              className='playlist-btn btn-collection'>
-              <HiOutlineViewGridAdd color='#facd66' /> Add to collection
-            </button>
-            <button className='btn-like'>
-              <HiHeart />
-            </button>
+            {myCollection?.filter(
+              (playlist) => playlist.id === chartDetails.id
+            )[0] ? (
+              <button
+                onClick={() => deleteFromCollection(chartDetails.id)}
+                className='playlist-btn btn-collection'>
+                <HiOutlineViewGridAdd color='#facd66' /> Remove from collection
+              </button>
+            ) : (
+              <button
+                onClick={() => addToCollection(chartDetails)}
+                className='playlist-btn btn-collection'>
+                <HiOutlineViewGridAdd color='#facd66' /> Add to collection
+              </button>
+            )}
           </div>
         </div>
       </section>

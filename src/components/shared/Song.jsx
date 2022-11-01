@@ -1,4 +1,4 @@
-import { HiOutlineHeart, HiDotsVertical } from 'react-icons/hi'
+import { HiOutlineHeart, HiDotsVertical, HiPlay, HiHeart } from 'react-icons/hi'
 import MusicContext from '../../contexts/MusicContext'
 import { useContext } from 'react'
 
@@ -7,20 +7,32 @@ function Song({ data, playlist }) {
   const munites = Math.floor(duration / 60)
   const seconds = duration % 60
 
-  const { loadTrack } = useContext(MusicContext)
+  const { loadTrack, addToLikes, deleteFromLikes, myLikes } =
+    useContext(MusicContext)
 
   function padTo2Digits(num) {
     return num.toString().padStart(2, '0')
   }
 
   return (
-    <div className='song' onClick={() => loadTrack(data, playlist.data)}>
+    <div className='song'>
       <div className='song-img'>
+        <button
+          onClick={() => loadTrack(data, playlist.data)}
+          className='song-btnPlay'>
+          <HiPlay />
+        </button>
         <img src={album.cover} alt='' />
       </div>
-      <p className='song-like'>
-        <HiOutlineHeart />
-      </p>
+      {myLikes?.filter((song) => song.id === data.id)[0] ? (
+        <p onClick={() => deleteFromLikes(data.id)} className='song-like'>
+          <HiHeart />
+        </p>
+      ) : (
+        <p onClick={() => addToLikes(data)} className='song-like'>
+          <HiOutlineHeart />
+        </p>
+      )}
       <p className='song-title'>
         {title} - {artist.name}
       </p>
