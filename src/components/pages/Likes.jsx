@@ -3,7 +3,7 @@ import MusicContext from '../../contexts/MusicContext'
 import TrackCard from '../shared/TrackCard'
 
 function Likes() {
-  const { myLikes, deleteFromLikes } = useContext(MusicContext)
+  const { myLikes } = useContext(MusicContext)
   const data = myLikes
   const playlist = myLikes.map((item) => item.data)
 
