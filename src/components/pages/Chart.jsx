@@ -28,7 +28,7 @@ function Chart() {
     }
 
     getChartDetails()
-  }, [])
+  }, [chartDetails])
 
   if (isLoading) return <Spinner size={'large'} />
 

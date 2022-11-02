@@ -4,7 +4,6 @@ import MusicContext from '../contexts/MusicContext'
 import Spinner from './shared/Spinner'
 function ChartList() {
   const { chartData, isLoading } = useContext(MusicContext)
-
   return isLoading ? (
     <div className='chart'>
       <h2 className='list-title'>Top chart</h2>

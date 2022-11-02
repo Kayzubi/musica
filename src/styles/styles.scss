@@ -8,7 +8,6 @@
 @import './base';
 
 //components
-@import './ui/chart';
 @import './ui/header';
 @import './ui/list';
 @import './ui/player';
@@ -17,3 +16,5 @@
 
 //pages
 @import './ui/home';
+@import './ui/chart';
+@import './ui/collection';

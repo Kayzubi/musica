@@ -1,0 +1,22 @@
+.collection {
+  &-link {
+    border: 1px solid $color-secondary;
+    padding: $base-padding $base-padding * 2;
+    border-radius: 10rem;
+    display: inline-block;
+    margin-right: 2rem;
+    margin-bottom: 4rem;
+    font-size: 1rem;
+
+    &.active {
+      background-color: $color-secondary;
+    }
+  }
+
+  &__card {
+    position: relative;
+    background-color: $color-dark-alt;
+    display: inline-block;
+    padding: $base-padding;
+  }
+}

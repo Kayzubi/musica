@@ -8,9 +8,9 @@ function Likes() {
   const playlist = myLikes.map((item) => item.data)
 
   return (
-    <div className='center'>
+    <div>
       {data.length === 0 ? (
-        <>
+        <div className='center'>
           <p>
             You currently have no songs in your{' '}
             <span className='secondary'>Likes</span>
@@ -18,7 +18,7 @@ function Likes() {
           <p>
             Add songs to your <span className='secondary'>Likes</span>
           </p>
-        </>
+        </div>
       ) : (
         data.map((song) => {
           return <TrackCard data={song.data} playlist={playlist} />

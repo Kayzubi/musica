@@ -30,6 +30,7 @@ function Player() {
       <div className='container'>
         <audio
           id='audio-player'
+          onEnded={nextTrack}
           src={currentTrack && currentTrack.preview}></audio>
         <div className='player__now-playing'>
           <img
