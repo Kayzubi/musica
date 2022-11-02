@@ -16,10 +16,8 @@ function Song({ data, playlist }) {
 
   return (
     <div className='song'>
-      <div className='song-img'>
-        <button
-          onClick={() => loadTrack(data, playlist.data)}
-          className='song-btnPlay'>
+      <div onClick={() => loadTrack(data, playlist.data)} className='song-img'>
+        <button className='song-btnPlay'>
           <HiPlay />
         </button>
         <img src={album.cover} alt='' />
@@ -33,7 +31,7 @@ function Song({ data, playlist }) {
           <HiOutlineHeart />
         </p>
       )}
-      <p className='song-title'>
+      <p onClick={() => loadTrack(data, playlist.data)} className='song-title'>
         {title} - {artist.name}
       </p>
       <p className='song-type'> {type} </p>

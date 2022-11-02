@@ -114,3 +114,16 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: rgba($grey-dark-3, $alpha: 0.5);
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+  height: 100%;
+}
+
+.secondary {
+  color: $color-secondary;
+}

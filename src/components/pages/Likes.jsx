@@ -8,14 +8,15 @@ function Likes() {
   const playlist = myLikes.map((item) => item.data)
 
   return (
-    <div>
+    <div className='center'>
       {data.length === 0 ? (
         <>
           <p>
-            You currently have no songs in your <span>Likes</span>
+            You currently have no songs in your{' '}
+            <span className='secondary'>Likes</span>
           </p>
           <p>
-            Add songs to your <span>Likes</span>
+            Add songs to your <span className='secondary'>Likes</span>
           </p>
         </>
       ) : (

@@ -12,8 +12,8 @@
     height: auto;
     overflow-x: hidden;
     overflow-y: hidden;
-    white-space: nowrap;
     padding-bottom: 1.5rem;
+    white-space: nowrap;
 
     &:hover {
       overflow-x: scroll;
@@ -34,6 +34,7 @@
   width: 15rem;
   display: inline-block;
   margin-right: 4rem;
+  margin-bottom: 4rem;
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -52,6 +53,7 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 0.2s;
+    color: $color-secondary;
   }
 
   &-like {
@@ -73,7 +75,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba($color-secondary, 0.5);
+      background-color: rgba($color-secondary, 0.3);
       opacity: 0;
       transition: opacity 0.2s;
     }
@@ -86,6 +88,7 @@
     font-size: 1.4rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
+    white-space: nowrap;
   }
   &-artist {
     font-size: 1.2rem;

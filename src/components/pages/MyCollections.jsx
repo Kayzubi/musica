@@ -7,13 +7,16 @@ function MyCollections() {
   const data = myCollection
 
   return (
-    <div>
+    <div className='center'>
       {data.length === 0 ? (
         <>
-          <p className='center'>
-            You currently have no charts in your <span>Collection</span>
+          <p>
+            You currently have no charts in your{' '}
+            <span className='secondary'>Collection</span>
           </p>
-          <p>Add charts to your Collection</p>
+          <p>
+            Add charts to your <span className='secondary'>Collection</span>
+          </p>
         </>
       ) : (
         <>
