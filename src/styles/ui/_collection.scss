@@ -17,6 +17,76 @@
     position: relative;
     background-color: $color-dark-alt;
     display: inline-block;
-    padding: $base-padding;
+    border-radius: $base-border-radius * 4;
+    margin-right: 4rem;
+    margin-bottom: 4rem;
+    overflow: hidden;
+
+    &-details {
+      position: absolute;
+      z-index: 10;
+      bottom: -8rem;
+      left: 10px;
+      opacity: 0;
+      transition: all 0.2s;
+      width: 95%;
+    }
+
+    &-img {
+      width: 100%;
+      transform: scale(1.2);
+      transition: all 0.2s;
+    }
+
+    &-btn {
+      position: absolute;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      color: $color-secondary;
+    }
+
+    &-title {
+      font-size: 1.5rem;
+    }
+
+    &-author,
+    &-likes {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      & .collection__card-img {
+        transform: scale(1);
+        filter: blur(5px);
+      }
+
+      & .collection__card-details {
+        bottom: 0.8rem;
+        opacity: 1;
+      }
+
+      & .collection-remove {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-play {
+    font-size: 3rem;
+    position: absolute;
+    top: -0.8rem;
+    right: 0.5rem;
+    cursor: pointer;
+  }
+
+  &-remove {
+    z-index: 10;
+    right: 1rem;
+    top: 1rem;
+    font-size: 3rem;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
   }
 }

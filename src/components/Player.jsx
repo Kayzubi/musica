@@ -12,7 +12,9 @@ import MusicContext from '../contexts/MusicContext'
 
 function Player() {
   const {
+    audioPlayer,
     currentTrack,
+    currentTime,
     isPlaying,
     isRepeat,
     isShuffled,
@@ -21,16 +23,31 @@ function Player() {
     toggleRepeat,
     nextTrack,
     previousTrack,
+    setCurrentTime,
   } = useContext(MusicContext)
 
   const [volume, setVolume] = useState(50)
+
+  useEffect(() => {
+    audioPlayer.volume = volume / 100
+  }, [volume])
+
+  const seekTo = (e) => {
+    let time = (e.target.value / 100) * 30
+    audioPlayer.currentTime = Math.round(time)
+    setCurrentTime(Math.round(e.target.value))
+  }
+
+  const handleVolumeChange = (e) => {
+    setVolume(Math.round(e.target.value))
+    console.log(e.target.value)
+  }
 
   return (
     <div className='player'>
       <div className='container'>
         <audio
           id='audio-player'
-          onEnded={nextTrack}
           src={currentTrack && currentTrack.preview}></audio>
         <div className='player__now-playing'>
           <img
@@ -70,12 +87,29 @@ function Player() {
             </button>
           </div>
           <div className='player__seek'>
-            <input type='range' id='seek' min={0} max={100} value={10} />
+            <input
+              type='range'
+              id='seek'
+              min={0}
+              max='100'
+              value={currentTime}
+              style={{ backgroundSize: `${currentTime}%` }}
+              onChange={seekTo}
+            />
           </div>
         </div>
         <div className='player__volume'>
           <IoIosVolumeHigh />
-          <input type='range' name='volume' id='volume' />
+          <input
+            type='range'
+            name='volume'
+            id='volume'
+            value={volume}
+            max={100}
+            min={0}
+            onChange={handleVolumeChange}
+            style={{ backgroundSize: `${volume}%` }}
+          />
         </div>
       </div>
     </div>

@@ -11,11 +11,12 @@ export const MusicContextProvider = ({ children }) => {
   const [afroBeats, setAfrobeats] = useState()
   const [isLoading, setisLoading] = useState(true)
   const [currentTrack, setCurrentTrack] = useState()
-  const [trackIndex, setTrackIndex] = useState()
+  const [trackIndex, setTrackIndex] = useState(0)
   const [trackQueue, setTrackQueue] = useState()
   const [audioPlayer, setAudioPlayer] = useState(
     document.createElement('audio')
   )
+  const [currentTime, setCurrentTime] = useState(0)
   const [isRepeat, setRepeat] = useState(false)
   const [isPlaying, setPlaying] = useState(false)
   const [isShuffled, setShuffled] = useState(false)
@@ -92,22 +93,28 @@ export const MusicContextProvider = ({ children }) => {
       const random = Math.floor(Math.random() * trackQueue.length)
       setTrackIndex(random)
     } else {
-      setTrackIndex((prevState) =>
-        prevState < trackQueue.length - 1 ? prevState + 1 : 0
-      )
+      setTrackIndex((currentIndex) => {
+        console.log(currentIndex)
+        return currentIndex < trackQueue.length - 1 ? currentIndex + 1 : 0
+      })
     }
     setCurrentTrack(trackQueue[trackIndex])
   }
 
   const previousTrack = () => {
-    setTrackIndex((prevState) =>
-      prevState === 0 ? trackQueue.length - 1 : prevState - 1
+    setTrackIndex((currentIndex) =>
+      currentIndex === 0 ? trackQueue.length - 1 : currentIndex - 1
     )
     setCurrentTrack(trackQueue[trackIndex])
+    console.log(trackIndex)
   }
 
   audioPlayer.onended = () => {
     nextTrack()
+  }
+
+  audioPlayer.ontimeupdate = () => {
+    setCurrentTime(((audioPlayer.currentTime / 30) * 100).toFixed(2))
   }
 
   const loadTrack = (track, playlist) => {
@@ -115,8 +122,8 @@ export const MusicContextProvider = ({ children }) => {
     let index = playlist.findIndex((item) => {
       return item.id === track.id
     })
-    setTrackIndex(index)
     setCurrentTrack(track)
+    setTrackIndex(index)
     audioPlayer.onloadedmetadata = () => {
       playTrack()
     }
@@ -133,6 +140,7 @@ export const MusicContextProvider = ({ children }) => {
         isLoading,
         chartDetails,
         currentTrack,
+        currentTime,
         trackIndex,
         trackQueue,
         isPlaying,
@@ -151,6 +159,7 @@ export const MusicContextProvider = ({ children }) => {
         setTrackQueue,
         setChartDetails,
         setCurrentTrack,
+        setCurrentTime,
         loadTrack,
         playPauseTrack,
         toggleShuffle,
