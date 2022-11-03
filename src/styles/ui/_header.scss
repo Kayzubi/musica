@@ -5,6 +5,20 @@
   padding: $base-padding $base-padding * 3;
 }
 
+.navToggle {
+  display: none;
+  background-color: transparent;
+  font-size: 3rem;
+  color: $color-light;
+  margin-top: 1rem;
+  border: none;
+
+  @include md {
+    display: block;
+    z-index: 2000;
+  }
+}
+
 .logo {
   &-box {
     font-size: 2rem;

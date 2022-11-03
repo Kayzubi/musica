@@ -3,10 +3,10 @@
   width: 5%;
 
   @include md {
-    position: absolute;
+    position: fixed;
     overflow: hidden;
-    z-index: 100000;
-    width: 100%;
+    z-index: 1000;
+    width: 0;
     background-color: $color-dark-alt;
     top: 0;
     left: 0;
@@ -16,6 +16,7 @@
     align-items: center;
     justify-content: center;
     text-align: left;
+    transition: all 0.2s;
   }
 
   &-section {
@@ -26,10 +27,15 @@
     &:not(:last-child) {
       margin-bottom: 5rem;
     }
+    @include md {
+      margin-left: 10rem;
+      width: 100%;
+    }
   }
 
   &-icon {
     font-size: 2.5rem;
+    text-align: left;
     margin-bottom: 2rem;
     color: $grey-dark-3;
     cursor: pointer;
@@ -39,12 +45,26 @@
     border: none;
     display: block;
 
+    &__title {
+      display: none;
+      @include md {
+        font-size: 2rem;
+        display: inline;
+        margin-top: -50px;
+      }
+    }
+
     &:hover {
-      transform: scale(1.25);
-      color: $color-secondary;
+      @include lg {
+        // transform: scale(1.25);
+        // color: $color-secondary;
+      }
     }
     &.active {
       color: $color-secondary;
+    }
+
+    @include md {
     }
   }
 }

@@ -4,6 +4,7 @@ import CollectionData from './Collection'
 const MusicContext = createContext()
 
 export const MusicContextProvider = ({ children }) => {
+  const [navOpen, setNavOpen] = useState(true)
   const [chartData, setChartData] = useState()
   const [chartDetails, setChartDetails] = useState()
   const [topSongs, setTopSongs] = useState()
@@ -20,6 +21,7 @@ export const MusicContextProvider = ({ children }) => {
   const [isRepeat, setRepeat] = useState(false)
   const [isPlaying, setPlaying] = useState(false)
   const [isShuffled, setShuffled] = useState(false)
+  const [screenWidth, setScreenWidth] = useState()
 
   const {
     myCollection,
@@ -54,6 +56,22 @@ export const MusicContextProvider = ({ children }) => {
     setAudioPlayer(document.querySelector('#audio-player'))
   }, [])
 
+  //Get Screen Width
+  window.onload = (e) => {
+    setScreenWidth(window.innerWidth)
+  }
+  window.onresize = (e) => {
+    setScreenWidth(e.target.innerWidth)
+  }
+
+  useEffect(() => {
+    if (screenWidth < 768) {
+      setNavOpen(false)
+    } else {
+      setNavOpen(true)
+    }
+  }, [screenWidth])
+
   const toggleRepeat = () => {
     if (isRepeat) {
       setRepeat(false)
@@ -62,6 +80,10 @@ export const MusicContextProvider = ({ children }) => {
       setRepeat(true)
       audioPlayer.loop = true
     }
+  }
+
+  const toggleNav = () => {
+    navOpen ? setNavOpen(false) : setNavOpen(true)
   }
 
   const toggleShuffle = () => {
@@ -148,6 +170,9 @@ export const MusicContextProvider = ({ children }) => {
         isShuffled,
         myCollection,
         myLikes,
+        navOpen,
+        screenWidth,
+        toggleNav,
         addToCollection,
         addToLikes,
         deleteFromCollection,
