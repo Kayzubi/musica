@@ -1,5 +1,5 @@
 import AnimatedDiv from '../shared/AnimatedDiv'
-import { HiHeart, HiPlay, HiOutlineViewGridAdd } from 'react-icons/hi'
+import { HiPlay, HiOutlineViewGridAdd } from 'react-icons/hi'
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import MusicContext from '../../contexts/MusicContext'
@@ -28,7 +28,7 @@ function Chart() {
     }
 
     getChartDetails()
-  }, [chartDetails])
+  }, [chartDetails, fetchData, params.id, setChartDetails])
 
   if (isLoading) return <Spinner size={'large'} />
 

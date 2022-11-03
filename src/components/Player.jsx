@@ -30,7 +30,7 @@ function Player() {
 
   useEffect(() => {
     audioPlayer.volume = volume / 100
-  }, [volume])
+  }, [volume, audioPlayer])
 
   const seekTo = (e) => {
     let time = (e.target.value / 100) * 30
