@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/musica/static/css/main.4afeab9f.css",
+    "main.js": "/musica/static/js/main.d36811e0.js",
+    "static/media/Pexels Photo by Eric Esma.png": "/musica/static/media/Pexels Photo by Eric Esma.b9f986e307b11897a84a.png",
+    "static/media/Vector.png": "/musica/static/media/Vector.bd88b0b061a274822b1c.png",
+    "index.html": "/musica/index.html",
+    "main.4afeab9f.css.map": "/musica/static/css/main.4afeab9f.css.map",
+    "main.d36811e0.js.map": "/musica/static/js/main.d36811e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4afeab9f.css",
+    "static/js/main.d36811e0.js"
+  ]
+}
