@@ -2,6 +2,22 @@
   padding: $base-padding * 2 0;
   width: 5%;
 
+  @include md {
+    position: absolute;
+    overflow: hidden;
+    z-index: 100000;
+    width: 100%;
+    background-color: $color-dark-alt;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+  }
+
   &-section {
     background-color: $color-dark-alt;
     text-align: center;

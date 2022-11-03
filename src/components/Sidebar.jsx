@@ -13,16 +13,17 @@ function Sidebar() {
     <div className='sidebar'>
       <div className='sidebar-section'>
         <NavLink end className='sidebar-icon' to='/'>
-          <HiHome />
+          <HiHome /> <span className='sidebar-icon__title'>Home</span>
         </NavLink>
         <NavLink className='sidebar-icon' to='/mycollections'>
-          <IoIosMusicalNotes />
+          <IoIosMusicalNotes />{' '}
+          <span className='sidebar-icon__title'>My collection</span>
         </NavLink>
         <button disabled='disabled' className='sidebar-icon'>
-          <IoMdRadio />
+          <IoMdRadio /> <span className='sidebar-icon__title'>Radio</span>
         </button>
         <button disabled='disabled' className='sidebar-icon'>
-          <IoIosFilm />
+          <IoIosFilm /> <span className='sidebar-icon__title'>Videos</span>
         </button>
       </div>
       <div className='sidebar-section'>

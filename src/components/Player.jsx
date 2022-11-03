@@ -26,7 +26,7 @@ function Player() {
     setCurrentTime,
   } = useContext(MusicContext)
 
-  const [volume, setVolume] = useState(50)
+  const [volume, setVolume] = useState(80)
 
   useEffect(() => {
     audioPlayer.volume = volume / 100

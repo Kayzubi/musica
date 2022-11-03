@@ -4,6 +4,7 @@ import CollectionData from './Collection'
 const MusicContext = createContext()
 
 export const MusicContextProvider = ({ children }) => {
+  const [navOpen, setNavOpen] = useState(false)
   const [chartData, setChartData] = useState()
   const [chartDetails, setChartDetails] = useState()
   const [topSongs, setTopSongs] = useState()
