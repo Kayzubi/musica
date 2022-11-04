@@ -4,16 +4,11 @@ import {
   IoMdRadio,
   IoIosPerson,
   IoIosLogOut,
-  IoIosClose,
 } from 'react-icons/io'
 import { HiHome } from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
-import { useContext } from 'react'
-import MusicContext from '../contexts/MusicContext'
 
 function Sidebar() {
-  const { toggleNav } = useContext(MusicContext)
-
   return (
     <div className='sidebar' id='sidebar'>
       <div className='sidebar-section'>
