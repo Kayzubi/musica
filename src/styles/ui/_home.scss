@@ -7,7 +7,6 @@
 
 .hero {
   @extend .main;
-  flex-wrap: wrap;
 
   &__main {
     background-color: $color-primary-alt-2;
