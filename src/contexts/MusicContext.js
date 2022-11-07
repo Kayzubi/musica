@@ -33,7 +33,11 @@ export const MusicContextProvider = ({ children }) => {
   } = CollectionData()
 
   const fetchData = async (url) => {
-    const data = await (await fetch(`/${url}`)).json()
+    const data = await (
+      await fetch(
+        `https://cors-anywhere.herokuapp.com/${process.env.REACT_APP_API_URL}/${url}`
+      )
+    ).json()
     return data
   }
 
