@@ -11,7 +11,7 @@ function MyCollections() {
       {data.length === 0 ? (
         <div className='center'>
           <p>
-            You currently have no charts in your{' '}
+            You currently have no charts in your
             <span className='secondary'>Collection</span>
           </p>
           <p>

@@ -7,6 +7,9 @@
 
 .hero {
   @extend .main;
+  @include md {
+    display: block;
+  }
 
   &__main {
     background-color: $color-primary-alt-2;
@@ -22,6 +25,7 @@
       right: 0;
       bottom: 0;
       z-index: 2;
+      height: 95%;
     }
     &-vector {
       position: absolute;
@@ -58,6 +62,20 @@
   scroll-behavior: smooth;
   scroll-snap-type: mandatory;
 
+  @include md {
+    width: 100%;
+    height: 20rem;
+  }
+  &-playlists {
+    @include md {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
+
   &:hover {
     overflow-y: auto;
   }
@@ -82,6 +100,11 @@
     position: relative;
     cursor: pointer;
     transition: all 0.2s;
+    @include md {
+      width: auto;
+      // height: auto;
+      // padding: 0;
+    }
 
     &:hover {
       transform: translateY(-5px);
@@ -100,16 +123,19 @@
     font-size: 1.4rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
+    white-space: nowrap;
   }
   &-author {
     font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
+    white-space: nowrap;
   }
   &-duration {
     font-size: 1rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
+    white-space: nowrap;
   }
 
   &-like {

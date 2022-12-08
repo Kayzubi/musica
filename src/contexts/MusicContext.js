@@ -5,7 +5,7 @@ const MusicContext = createContext()
 
 export const MusicContextProvider = ({ children }) => {
   const [navOpen, setNavOpen] = useState(true)
-  const [chartData, setChartData] = useState()
+  const [chartData, setChartData] = useState([])
   const [chartDetails, setChartDetails] = useState()
   const [topSongs, setTopSongs] = useState()
   const [globalHits, setGlobalHits] = useState()
@@ -33,17 +33,20 @@ export const MusicContextProvider = ({ children }) => {
   } = CollectionData()
 
   const fetchData = async (url) => {
-    const data = await (
-      await fetch(
-        `https://cors-anywhere.herokuapp.com/${process.env.REACT_APP_API_URL}/${url}`
-      )
-    ).json()
+    const data = await (await fetch(`/${url}`)).json()
     return data
   }
 
+  const charts = [
+    '10567515462',
+    '2135000122',
+    '1677006641',
+    '1440614715',
+    '8877101022',
+  ]
+
   useEffect(() => {
     async function runData() {
-      setChartData(await fetchData('chart/0/playlists?index=0&limit=5'))
       setTopSongs(
         await fetchData('playlist/1362516565/tracks?index=0&limit=15')
       )
@@ -54,6 +57,7 @@ export const MusicContextProvider = ({ children }) => {
         await fetchData('playlist/8970461162/tracks?index=0&limit=15')
       )
       setisLoading(false)
+      console.log(chartData)
     }
 
     runData()
