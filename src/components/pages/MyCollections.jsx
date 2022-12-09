@@ -12,7 +12,7 @@ function MyCollections() {
         <div className='center'>
           <p>
             You currently have no charts in your
-            <span className='secondary'>Collection</span>
+            <span className='secondary'> Collection</span>
           </p>
           <p>
             Add charts to your <span className='secondary'>Collection</span>
@@ -20,11 +20,11 @@ function MyCollections() {
         </div>
       ) : (
         <>
-          {data.map((album) => {
+          {data.map((chart) => {
             return (
               <CollectionCard
-                key={album.id}
-                data={album.data}
+                key={chart.id}
+                data={chart.data}
                 remove={deleteFromCollection}
               />
             )

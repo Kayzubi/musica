@@ -2,6 +2,9 @@ import { createContext, useEffect, useState } from 'react'
 import CollectionData from './Collection'
 
 const MusicContext = createContext()
+const RAPIDAPI_KEY = process.env.REACT_APP_X_RAPIDAPI_KEY
+const RAPIDAPI_HOST = process.env.REACT_APP_X_RAPIDAPI_HOST
+const RAPIDAPI_URL = process.env.REACT_APP_API_URL
 
 export const MusicContextProvider = ({ children }) => {
   const [navOpen, setNavOpen] = useState(true)
@@ -32,8 +35,16 @@ export const MusicContextProvider = ({ children }) => {
     deleteFromLikes,
   } = CollectionData()
 
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': RAPIDAPI_KEY,
+      'X-RapidAPI-Host': RAPIDAPI_HOST,
+    },
+  }
+
   const fetchData = async (url) => {
-    const data = await (await fetch(`/${url}`)).json()
+    const data = await (await fetch(`${RAPIDAPI_URL}/${url}`, options)).json()
     return data
   }
 
@@ -47,17 +58,23 @@ export const MusicContextProvider = ({ children }) => {
 
   useEffect(() => {
     async function runData() {
+      charts.map(async (playlist) => {
+        const playlistData = await fetchData(`playlist/${playlist}`)
+
+        setChartData((prev) => {
+          return [...prev, playlistData]
+        })
+      })
       setTopSongs(
-        await fetchData('playlist/1362516565/tracks?index=0&limit=15')
+        await fetchData('playlist/1362516565/tracks?index=0&limit=30')
       )
       setGlobalHits(
-        await fetchData('playlist/2098157264/tracks?index=0&limit=15')
+        await fetchData('playlist/2098157264/tracks?index=0&limit=30')
       )
       setAfrobeats(
-        await fetchData('playlist/8970461162/tracks?index=0&limit=15')
+        await fetchData('playlist/8970461162/tracks?index=0&limit=30')
       )
       setisLoading(false)
-      console.log(chartData)
     }
 
     runData()

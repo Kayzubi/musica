@@ -14,16 +14,17 @@ function ChartList() {
       <h2 className='list-title'>Top chart</h2>
       <div className='chart-playlists'>
         {chartData &&
-          chartData.data.map((item) => {
+          chartData.map((item) => {
             return (
               <ChartCard
                 key={item.id}
                 id={item.id}
                 image={item.picture}
                 name={item.title}
-                author={item.user.name}
+                author={item.creator.name}
                 duration={item.creation_date}
               />
+              // <p>{item.id}</p>
             )
           })}
       </div>
