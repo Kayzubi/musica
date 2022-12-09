@@ -48,15 +48,14 @@ export const MusicContextProvider = ({ children }) => {
     return data
   }
 
-  const charts = [
-    '10567515462',
-    '2135000122',
-    '1677006641',
-    '1440614715',
-    '8877101022',
-  ]
-
   useEffect(() => {
+    const charts = [
+      '10567515462',
+      '2135000122',
+      '1677006641',
+      '1440614715',
+      '8877101022',
+    ]
     async function runData() {
       charts.map(async (playlist) => {
         const playlistData = await fetchData(`playlist/${playlist}`)
@@ -79,7 +78,7 @@ export const MusicContextProvider = ({ children }) => {
 
     runData()
     setAudioPlayer(document.querySelector('#audio-player'))
-  }, [])
+  }, [fetchData])
 
   //Get Screen Width
   window.onload = (e) => {
