@@ -3,21 +3,22 @@ import { IoIosPlayCircle, IoIosHeart, IoIosHeartEmpty } from 'react-icons/io'
 import MusicContext from '../../contexts/MusicContext'
 
 function TrackCard({ data, playlist }) {
-  const { loadTrack, myLikes, addToLikes, deleteFromLikes } =
-    useContext(MusicContext)
+  const { myLikes, addToLikes, deleteFromLikes } = useContext(MusicContext)
+
+  const { id, preview_url, album, artists, name } = data
   return (
     <div className='music list-item'>
-      <div onClick={() => loadTrack(data, playlist)} className='music-img-box'>
+      <div className='music-img-box'>
         <button className='music-btn music-play'>
           <IoIosPlayCircle />
         </button>
-        <img src={data.album.cover_medium} alt='track' className='music-img' />
+        <img src={album.images[0].url} alt='track' className='music-img' />
       </div>
-      <p className='music-name'>{data.title}</p>
-      <p className='music-artist'>{data.artist.name}</p>
+      <p className='music-name'>{name}</p>
+      <p className='music-artist'>{artists[0].name}</p>
       {myLikes?.filter((song) => song.id === data.id)[0] ? (
         <button
-          onClick={() => deleteFromLikes(data.id)}
+          onClick={() => deleteFromLikes(id)}
           className='music-btn music-like'>
           <IoIosHeart />
         </button>

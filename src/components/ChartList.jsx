@@ -17,7 +17,6 @@ function ChartList() {
     }
 
     getData()
-    console.log(chartData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -32,10 +31,7 @@ function ChartList() {
       <div className='chart-playlists'>
         {chartData &&
           chartData.albums.map((item) => {
-            return (
-              <ChartCard key={item.id} item={item} />
-              // <p>{item.id}</p>
-            )
+            return <ChartCard key={item.id} item={item} />
           })}
       </div>
     </div>

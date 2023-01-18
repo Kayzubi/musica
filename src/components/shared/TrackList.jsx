@@ -1,13 +1,26 @@
 import TrackCard from './TrackCard'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import MusicContext from '../../contexts/MusicContext'
 import Spinner from './Spinner'
 import { useEffect } from 'react'
 
-function TrackList({ listname, listdata }) {
-  const { isLoading } = useContext(MusicContext)
+function TrackList({ listname, id }) {
+  const { fetchData } = useContext(MusicContext)
+  const [isLoading, setLoading] = useState(true)
+  const [playlist, setPlaylist] = useState([])
 
-  // const { tracks } = listdata
+  useEffect(() => {
+    async function setPlaylistData() {
+      const data = await fetchData(
+        `playlist_tracks/?id=${id}&offset=0&limit=30`
+      )
+      setPlaylist(data.items)
+      setLoading(false)
+    }
+
+    setPlaylistData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className='list'>
@@ -16,12 +29,10 @@ function TrackList({ listname, listdata }) {
         <Spinner size={'medium'} />
       ) : (
         <div className='list-h'>
-          {/* {listdata &&
-            tracks.map((item) => {
-              return (
-                <TrackCard key={item.id} data={item} playlist={listdata.data} />
-              )
-            })} */}
+          {playlist &&
+            playlist.map((item) => (
+              <TrackCard key={item.id} data={item.track} playlist={playlist} />
+            ))}
         </div>
       )}
     </div>
