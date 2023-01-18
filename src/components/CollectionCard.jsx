@@ -5,29 +5,27 @@ import MusicContext from '../contexts/MusicContext'
 function CollectionCard({ data, remove }) {
   const { loadTrack } = useContext(MusicContext)
 
+  const { id, images, name, tracks, artists, total_tracks } = data
+
   return (
     <div className='collection__card'>
       <button
-        onClick={() => remove(data.id)}
+        onClick={() => remove(id)}
         className='collection__card-btn collection-remove'>
         <IoIosClose />
       </button>
-      <Link to={`/chart/${data.id}`}>
-        <img
-          src={data.picture_medium}
-          alt=''
-          className='collection__card-img'
-        />
+      <Link to={`/album/${id}`}>
+        <img src={images[1].url} alt='' className='collection__card-img' />
       </Link>
       <div className='collection__card-details'>
         <button
-          onClick={() => loadTrack(data.tracks.data[0], data.tracks.data)}
+          onClick={() => loadTrack(tracks.items[0], tracks.items)}
           className='collection__card-btn collection-play'>
           <IoIosPlayCircle />
         </button>
-        <h3 className='collection__card-title'>{data.title}</h3>
-        <p className='collection__card-author'>{data.creator.name}</p>
-        <p className='collection__card-likes'>{data.nb_tracks} tracks</p>
+        <h3 className='collection__card-title'>{name}</h3>
+        <p className='collection__card-author'>{artists[0].name}</p>
+        <p className='collection__card-likes'>{total_tracks} tracks</p>
       </div>
     </div>
   )

@@ -1,14 +1,20 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import MusicContext from '../../contexts/MusicContext'
 import CollectionCard from '../CollectionCard'
+import Spinner from '../shared/Spinner'
 
 function MyCollections() {
   const { myCollection, deleteFromCollection } = useContext(MusicContext)
-  const data = myCollection
+
+  useEffect(() => {
+    console.log(myCollection)
+  }, [myCollection])
+
+  if (myCollection === undefined) return <Spinner size='large' />
 
   return (
     <div>
-      {data.length === 0 ? (
+      {myCollection === undefined || myCollection.length === 0 ? (
         <div className='center'>
           <p>
             You currently have no charts in your
@@ -20,7 +26,7 @@ function MyCollections() {
         </div>
       ) : (
         <>
-          {data.map((chart) => {
+          {myCollection.map((chart) => {
             return (
               <CollectionCard
                 key={chart.id}
