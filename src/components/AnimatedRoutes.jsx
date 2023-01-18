@@ -13,7 +13,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path='/'>
           <Route index element={<Home />} />
-          <Route path='/chart/:id' element={<Chart />} />
+          <Route path='/album/:id' element={<Chart />} />
           <Route path='/mycollections' element={<Collection />}>
             <Route index element={<MyCollection />} />
             <Route path='likes' element={<Likes />} />

@@ -2,16 +2,18 @@ import { HiOutlineHeart, HiDotsVertical, HiPlay, HiHeart } from 'react-icons/hi'
 import MusicContext from '../../contexts/MusicContext'
 import { useContext } from 'react'
 
-function Song({ data, playlist }) {
-  const { title, album, artist, type, duration } = data
-  const munites = Math.floor(duration / 60)
-  const seconds = duration % 60
+function Song({ data, playlist, cover }) {
+  const { name, artists, type, duration_ms } = data
 
   const { loadTrack, addToLikes, deleteFromLikes, myLikes } =
     useContext(MusicContext)
 
-  function padTo2Digits(num) {
-    return num.toString().padStart(2, '0')
+  function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000)
+    var seconds = ((millis % 60000) / 1000).toFixed(0)
+    return seconds === 60
+      ? minutes + 1 + ':00'
+      : minutes + ':' + (seconds < 10 ? '0' : '') + seconds
   }
 
   return (
@@ -20,7 +22,7 @@ function Song({ data, playlist }) {
         <button className='song-btnPlay'>
           <HiPlay />
         </button>
-        <img src={album.cover} alt='' />
+        <img src={cover} alt='' />
       </div>
       {myLikes?.filter((song) => song.id === data.id)[0] ? (
         <p onClick={() => deleteFromLikes(data.id)} className='song-like'>
@@ -32,12 +34,13 @@ function Song({ data, playlist }) {
         </p>
       )}
       <p onClick={() => loadTrack(data, playlist.data)} className='song-title'>
-        {title} - {artist.name}
+        {name} <br />
+        {artists.map((artist) => (
+          <span className='song_artistname'> {artist.name}</span>
+        ))}
       </p>
       <p className='song-type'> {type} </p>
-      <p className='song-duration'>
-        {`${padTo2Digits(munites)}:${padTo2Digits(seconds)}`}
-      </p>
+      <p className='song-duration'>{millisToMinutesAndSeconds(duration_ms)}</p>
       <span className='song-options'>
         <HiDotsVertical />
       </span>

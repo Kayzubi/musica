@@ -22,37 +22,43 @@ function Chart() {
 
   useEffect(() => {
     async function getChartDetails() {
-      const response = await fetchData(`playlist/${params.id}`)
-      setChartDetails(response)
+      const album = await fetchData(`albums/?ids=${params.id}`)
+      setChartDetails(album.albums[0])
       setLoading(false)
     }
-
     getChartDetails()
-  }, [chartDetails, fetchData, params.id, setChartDetails])
+    console.log(chartDetails)
+    console.log(chartDetails)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (isLoading) return <Spinner size={'large'} />
 
   return (
     <AnimatedDiv>
-      <BackgroundImage image={chartDetails.picture_big} />
+      <BackgroundImage image={chartDetails.images[0].url} />
       <section className='section section-info'>
-        <img src={chartDetails.picture_big} alt='' className='playlist-img' />
+        <img src={chartDetails.images[0].url} alt='' className='playlist-img' />
         <div className='playlist-details'>
-          <h2 className='playlist-name'>{chartDetails.title}</h2>
-          <p className='playlist-description'>{chartDetails.description}</p>
+          <h2 className='playlist-name'>{chartDetails.name}</h2>
+          <p className='playlist-description'>{chartDetails.label}</p>
           <p className='playlist-stat'>
             <span className='playlist-length'>
-              {chartDetails.nb_tracks} songs
+              {chartDetails.total_tracks} songs
             </span>
-            -
+            <br />
             <span className='playlist-duration'>
-              {Math.floor(chartDetails.duration / 3600)}hrs
+              {chartDetails.release_date}
             </span>
           </p>
           <div className='playlist-buttons'>
             <button
               onClick={() =>
-                loadTrack(chartDetails.tracks.data[0], chartDetails.tracks.data)
+                loadTrack(
+                  chartDetails.tracks.items[0],
+                  chartDetails.tracks.items
+                )
               }
               className='playlist-btn btn-play-all'>
               <HiPlay color='#facd66' /> Play All
@@ -76,9 +82,14 @@ function Chart() {
         </div>
       </section>
       <section className='section section-songs'>
-        {chartDetails.tracks.data.map((track) => {
+        {chartDetails.tracks.items.map((track) => {
           return (
-            <Song key={track.id} data={track} playlist={chartDetails.tracks} />
+            <Song
+              key={track.id}
+              data={track}
+              playlist={chartDetails.tracks}
+              cover={chartDetails.images[2].url}
+            />
           )
         })}
       </section>

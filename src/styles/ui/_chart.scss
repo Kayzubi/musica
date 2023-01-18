@@ -143,3 +143,16 @@
     }
   }
 }
+
+.song_artistname {
+  position: relative;
+  margin-top: 2px;
+
+  &:not(:last-child):after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    content: ',';
+    color: #fff;
+  }
+}

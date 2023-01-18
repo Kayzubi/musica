@@ -12,7 +12,7 @@ function TrackList({ listname, id }) {
   useEffect(() => {
     async function setPlaylistData() {
       const data = await fetchData(
-        `playlist_tracks/?id=${id}&offset=0&limit=30`
+        `playlist_tracks/?id=${id}&offset=0&limit=10`
       )
       setPlaylist(data.items)
       setLoading(false)

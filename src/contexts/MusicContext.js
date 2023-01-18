@@ -43,6 +43,8 @@ export const MusicContextProvider = ({ children }) => {
         deleteFromCollection,
         deleteFromLikes,
         chartData,
+        chartDetails,
+        setChartDetails,
         setChartData,
         fetchData,
       }}>
