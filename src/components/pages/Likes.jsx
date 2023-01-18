@@ -1,15 +1,18 @@
 import { useContext } from 'react'
 import MusicContext from '../../contexts/MusicContext'
+import Spinner from '../shared/Spinner'
 import TrackCard from '../shared/TrackCard'
 
 function Likes() {
   const { myLikes } = useContext(MusicContext)
   const data = myLikes
-  const playlist = myLikes.map((item) => item.data)
+  const playlist = myLikes?.map((item) => item.data)
+
+  if (myLikes === undefined) return <Spinner size='large' />
 
   return (
     <div>
-      {data.length === 0 ? (
+      {data === undefined || data.length === 0 ? (
         <div className='center'>
           <p>
             You currently have no songs in your{' '}

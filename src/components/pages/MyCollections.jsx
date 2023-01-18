@@ -14,7 +14,7 @@ function MyCollections() {
 
   return (
     <div>
-      {myCollection === undefined || myCollection.length === 0 ? (
+      {myCollection?.length === 0 ? (
         <div className='center'>
           <p>
             You currently have no charts in your
