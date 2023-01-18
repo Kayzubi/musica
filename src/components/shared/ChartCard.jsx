@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom'
 
-function ChartCard({ image, name, author, duration, id }) {
+function ChartCard({ item }) {
+  const { artists, images, name, label, id } = item
+
   return (
     <Link to={`/chart/${id}`} className='chart-card'>
-      <img src={image} alt='cover art' className='chart-img' />
+      <img src={images[1].url} alt='cover art' className='chart-img' />
       <div className='chart-details'>
         <h4 className='chart-name'>{name}</h4>
-        <p className='chart-author'>{author}</p>
-        <p className='chart-duration'>{duration}</p>
+        <p className='chart-author'>{artists[0].name}</p>
+        <p className='chart-duration'>{label}</p>
       </div>
     </Link>
   )

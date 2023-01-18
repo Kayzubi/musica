@@ -28,9 +28,9 @@ function Player() {
 
   const [volume, setVolume] = useState(80)
 
-  useEffect(() => {
-    audioPlayer.volume = volume / 100
-  }, [volume, audioPlayer])
+  // useEffect(() => {
+  //   audioPlayer.volume = volume / 100
+  // }, [volume, audioPlayer])
 
   const seekTo = (e) => {
     let time = (e.target.value / 100) * 30

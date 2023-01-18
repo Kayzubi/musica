@@ -1,9 +1,26 @@
 import ChartCard from './shared/ChartCard'
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import MusicContext from '../contexts/MusicContext'
 import Spinner from './shared/Spinner'
 function ChartList() {
-  const { chartData, isLoading } = useContext(MusicContext)
+  const { chartData, setChartData, fetchData } = useContext(MusicContext)
+  const [isLoading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function getData() {
+      setChartData(
+        await fetchData(
+          `albums/?ids=16ppCNm1KGCgUS0g3iKqh8%2C6BK6S6VtshawDNE1MGT3eK%2C2DNwwAZeVYl3Ld9zTP4zBA%2C7u1jkHWcxmUL7lbNDNyMRY%2C73rKiFhHZatrwJL0B1F6hY`
+        )
+      )
+      setLoading(false)
+    }
+
+    getData()
+    console.log(chartData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return isLoading ? (
     <div className='chart'>
       <h2 className='list-title'>Top chart</h2>
@@ -14,16 +31,9 @@ function ChartList() {
       <h2 className='list-title'>Top chart</h2>
       <div className='chart-playlists'>
         {chartData &&
-          chartData.map((item) => {
+          chartData.albums.map((item) => {
             return (
-              <ChartCard
-                key={item.id}
-                id={item.id}
-                image={item.picture}
-                name={item.title}
-                author={item.creator.name}
-                duration={item.creation_date}
-              />
+              <ChartCard key={item.id} item={item} />
               // <p>{item.id}</p>
             )
           })}
