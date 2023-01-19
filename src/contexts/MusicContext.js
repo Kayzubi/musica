@@ -22,6 +22,8 @@ export const MusicContextProvider = ({ children }) => {
   const [currentTrack, setCurrentTrack] = useState()
   const [trackIndex, setTrackIndex] = useState(0)
   const [trackQueue, setTrackQueue] = useState()
+  const [screenWidth, setScreenWidth] = useState()
+  const [navOpen, setNavOpen] = useState(true)
 
   const {
     myCollection,
@@ -69,6 +71,26 @@ export const MusicContextProvider = ({ children }) => {
     setAudioPlayer(document.getElementById('audio-player'))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  //Get Screen Width
+  window.onload = (e) => {
+    setScreenWidth(window.innerWidth)
+  }
+  window.onresize = (e) => {
+    setScreenWidth(e.target.innerWidth)
+  }
+
+  useEffect(() => {
+    if (screenWidth < 768) {
+      setNavOpen(false)
+    } else {
+      setNavOpen(true)
+    }
+  }, [screenWidth])
+
+  const toggleNav = () => {
+    navOpen ? setNavOpen(false) : setNavOpen(true)
+  }
 
   const toggleRepeat = () => {
     if (isRepeat) {
@@ -154,6 +176,8 @@ export const MusicContextProvider = ({ children }) => {
   return (
     <MusicContext.Provider
       value={{
+        navOpen,
+        screenWidth,
         myCollection,
         myLikes,
         addToCollection,
@@ -182,6 +206,8 @@ export const MusicContextProvider = ({ children }) => {
         toggleShuffle,
         toggleRepeat,
         setCurrentTime,
+        toggleNav,
+        setNavOpen,
       }}>
       {children}
     </MusicContext.Provider>

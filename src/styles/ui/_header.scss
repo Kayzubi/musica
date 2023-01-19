@@ -12,6 +12,7 @@
   color: $color-light;
   margin-top: 1rem;
   border: none;
+  cursor: pointer;
 
   @include md {
     display: block;

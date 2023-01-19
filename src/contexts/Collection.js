@@ -1,5 +1,6 @@
 import Dexie from 'dexie'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { toast } from 'react-toastify'
 
 const db = new Dexie('Collections')
 
@@ -18,6 +19,7 @@ const CollectionData = () => {
       id,
       data,
     })
+    toast.success('Added to collection')
   }
 
   const addToLikes = async (data) => {
@@ -26,14 +28,17 @@ const CollectionData = () => {
       id,
       data,
     })
+    toast.success('Added to likes')
   }
 
   const deleteFromCollection = async (id) => {
     await db.mycollection.delete(id)
+    toast.success('Removed from collection')
   }
 
   const deleteFromLikes = async (id) => {
     await db.likes.delete(id)
+    toast.success('Removed from likes')
   }
 
   return {

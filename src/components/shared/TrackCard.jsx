@@ -8,11 +8,11 @@ function TrackCard({ data, playlist }) {
 
   const { id, album, artists, name } = data
   return (
-    <div
-      className='music list-item'
-      onClick={() => loadTrack(data, playlist.items)}>
+    <div className='music list-item'>
       <div className='music-img-box'>
-        <button className='music-btn music-play'>
+        <button
+          onClick={() => loadTrack(data, playlist.items)}
+          className='music-btn music-play'>
           <IoIosPlayCircle />
         </button>
         <img src={album.images[0].url} alt='track' className='music-img' />
