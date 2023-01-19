@@ -28,9 +28,9 @@ function Player() {
 
   const [volume, setVolume] = useState(80)
 
-  // useEffect(() => {
-  //   audioPlayer.volume = volume / 100
-  // }, [volume, audioPlayer])
+  useEffect(() => {
+    audioPlayer.volume = volume / 100
+  }, [volume, audioPlayer])
 
   const seekTo = (e) => {
     let time = (e.target.value / 100) * 30
@@ -48,17 +48,17 @@ function Player() {
       <div className='container'>
         <audio
           id='audio-player'
-          src={currentTrack && currentTrack.preview}></audio>
+          src={currentTrack && currentTrack.preview_url}></audio>
         <div className='player__now-playing'>
           <img
-            src={currentTrack && currentTrack.album.cover}
+            src={currentTrack && currentTrack.album.images[1].url}
             alt=''
             className='player__now-playing-img'
           />
           <div className='player__now-playing-details'>
-            <p className='title'> {currentTrack && currentTrack.title}</p>
+            <p className='title'> {currentTrack && currentTrack.name}</p>
             <div className='artist'>
-              {currentTrack && currentTrack.artist.name}
+              {currentTrack && currentTrack.artists[0].name}
             </div>
           </div>
         </div>

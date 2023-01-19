@@ -12,6 +12,16 @@ export const MusicContextProvider = ({ children }) => {
   const [hotNaija, setHotNaija] = useState()
   const [chartDetails, setChartDetails] = useState()
   const [isLoading, setLoading] = useState(true)
+  const [audioPlayer, setAudioPlayer] = useState(
+    document.createElement('audio')
+  )
+  const [currentTime, setCurrentTime] = useState(0)
+  const [isRepeat, setRepeat] = useState(false)
+  const [isPlaying, setPlaying] = useState(false)
+  const [isShuffled, setShuffled] = useState(false)
+  const [currentTrack, setCurrentTrack] = useState()
+  const [trackIndex, setTrackIndex] = useState(0)
+  const [trackQueue, setTrackQueue] = useState()
 
   const {
     myCollection,
@@ -44,20 +54,102 @@ export const MusicContextProvider = ({ children }) => {
       )
       setTodaysHits(
         await fetchData(
-          'playlist_tracks/?id=37i9dQZEVXbMDoHDwVN2tF&offset=0&limit=10'
+          'playlist_tracks/?id=37i9dQZEVXbMDoHDwVN2tF&offset=0&limit=15'
         )
       )
       setHotNaija(
         await fetchData(
-          'playlist_tracks/?id=37i9dQZF1DWZCOSaet9tpB&offset=0&limit=10'
+          'playlist_tracks/?id=37i9dQZF1DWZCOSaet9tpB&offset=0&limit=15'
         )
       )
       setLoading(false)
     }
 
     getData()
+    setAudioPlayer(document.getElementById('audio-player'))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const toggleRepeat = () => {
+    if (isRepeat) {
+      setRepeat(false)
+      audioPlayer.loop = false
+    } else {
+      setRepeat(true)
+      audioPlayer.loop = true
+    }
+  }
+
+  const toggleShuffle = () => {
+    isShuffled ? setShuffled(false) : setShuffled(true)
+  }
+
+  const playPauseTrack = () => {
+    if (!isPlaying && currentTrack === undefined) {
+      console.log('Nothing to play')
+    } else if (!isPlaying) {
+      playTrack()
+    } else {
+      pauseTrack()
+    }
+  }
+
+  const playTrack = () => {
+    audioPlayer.play()
+    setPlaying(true)
+  }
+
+  const pauseTrack = () => {
+    audioPlayer.pause()
+    setPlaying(false)
+  }
+
+  const nextTrack = () => {
+    if (isShuffled) {
+      const random = Math.floor(Math.random() * trackQueue.length)
+      setTrackIndex(random)
+      setCurrentTrack(trackQueue[random].track)
+    } else {
+      let index
+      trackIndex < trackQueue.length - 1
+        ? (index = trackIndex + 1)
+        : (index = 0)
+
+      setTrackIndex(index)
+      setCurrentTrack(trackQueue[index].track)
+    }
+  }
+
+  const previousTrack = () => {
+    let index
+
+    trackIndex === 0
+      ? (index = trackQueue.length - 1)
+      : (index = trackIndex - 1)
+
+    setTrackIndex(index)
+    setCurrentTrack(trackQueue[index].track)
+  }
+
+  audioPlayer.onended = () => {
+    nextTrack()
+  }
+
+  audioPlayer.ontimeupdate = () => {
+    setCurrentTime(((audioPlayer.currentTime / 30) * 100).toFixed(2))
+  }
+
+  const loadTrack = (track, playlist) => {
+    setTrackQueue(playlist)
+    let index = playlist.findIndex((item) => {
+      return item.track.id === track.id
+    })
+    setCurrentTrack(track)
+    setTrackIndex(index)
+    audioPlayer.onloadedmetadata = () => {
+      playTrack()
+    }
+  }
 
   return (
     <MusicContext.Provider
@@ -68,13 +160,28 @@ export const MusicContextProvider = ({ children }) => {
         addToLikes,
         deleteFromCollection,
         deleteFromLikes,
+        audioPlayer,
         chartData,
         hotNaija,
         todaysHits,
         isLoading,
         chartDetails,
         setChartDetails,
+        currentTime,
+        currentTrack,
+        trackIndex,
+        trackQueue,
+        isPlaying,
+        isRepeat,
+        isShuffled,
         fetchData,
+        loadTrack,
+        previousTrack,
+        nextTrack,
+        playPauseTrack,
+        toggleShuffle,
+        toggleRepeat,
+        setCurrentTime,
       }}>
       {children}
     </MusicContext.Provider>
