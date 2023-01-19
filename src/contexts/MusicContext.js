@@ -139,13 +139,28 @@ export const MusicContextProvider = ({ children }) => {
     setCurrentTime(((audioPlayer.currentTime / 30) * 100).toFixed(2))
   }
 
-  const loadTrack = (track, playlist) => {
+  const loadAlbum = (track, playlist) => {
     setTrackQueue(playlist)
     let index = playlist.findIndex((item) => {
-      return item.track.id === track.id
+      return item.id === track.id
     })
     setCurrentTrack(track)
     setTrackIndex(index)
+    console.log(playlist)
+    audioPlayer.onloadedmetadata = () => {
+      playTrack()
+    }
+  }
+
+  const loadTrack = (track, playlist) => {
+    setTrackQueue(playlist)
+    let index = playlist.findIndex((item) => {
+      return item.track.id === track.id ?? item.id === track.id
+    })
+    setCurrentTrack(track)
+    setTrackIndex(index)
+    console.log(playlist)
+    console.log(track)
     audioPlayer.onloadedmetadata = () => {
       playTrack()
     }

@@ -19,6 +19,7 @@ function Chart() {
   } = useContext(MusicContext)
   const params = useParams()
   const [isLoading, setLoading] = useState(true)
+  const [playlist, setPlaylist] = useState([])
 
   useEffect(() => {
     async function getChartDetails() {
@@ -27,11 +28,26 @@ function Chart() {
       setLoading(false)
     }
     getChartDetails()
-    console.log(chartDetails)
-    console.log(chartDetails)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const list = chartDetails.tracks.items.map((item) => {
+        return {
+          id: item.id,
+          track: {
+            ...item,
+            album: { name: chartDetails.name, images: chartDetails.images },
+          },
+        }
+      })
+
+      console.log(chartDetails)
+      setPlaylist(list)
+    }
+  }, [chartDetails, isLoading])
 
   if (isLoading) return <Spinner size={'large'} />
 
@@ -54,12 +70,7 @@ function Chart() {
           </p>
           <div className='playlist-buttons'>
             <button
-              onClick={() =>
-                loadTrack(
-                  chartDetails.tracks.items[0],
-                  chartDetails.tracks.items
-                )
-              }
+              onClick={() => loadTrack(playlist[0].track, playlist)}
               className='playlist-btn btn-play-all'>
               <HiPlay color='#facd66' /> Play All
             </button>
