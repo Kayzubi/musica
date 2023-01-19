@@ -44,7 +44,6 @@ function Chart() {
         }
       })
 
-      console.log(chartDetails)
       setPlaylist(list)
     }
   }, [chartDetails, isLoading])
@@ -93,12 +92,12 @@ function Chart() {
         </div>
       </section>
       <section className='section section-songs'>
-        {chartDetails.tracks.items.map((track) => {
+        {playlist.map((item) => {
           return (
             <Song
-              key={track.id}
-              data={track}
-              playlist={chartDetails.tracks}
+              key={item.id}
+              data={item}
+              playlist={playlist}
               cover={chartDetails.images[2].url}
             />
           )

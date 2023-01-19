@@ -1,9 +1,9 @@
-import { HiOutlineHeart, HiDotsVertical, HiPlay, HiHeart } from 'react-icons/hi'
-import MusicContext from '../../contexts/MusicContext'
 import { useContext } from 'react'
+import { HiDotsVertical, HiHeart, HiOutlineHeart, HiPlay } from 'react-icons/hi'
+import MusicContext from '../../contexts/MusicContext'
 
 function Song({ data, playlist, cover }) {
-  const { name, artists, type, duration_ms } = data
+  const { name, artists, type, duration_ms } = data.track
 
   const { loadTrack, addToLikes, deleteFromLikes, myLikes } =
     useContext(MusicContext)
@@ -17,8 +17,10 @@ function Song({ data, playlist, cover }) {
   }
 
   return (
-    <div className='song'>
-      <div onClick={() => loadTrack(data, playlist.data)} className='song-img'>
+    <div className='song' id={data.track.id}>
+      <div
+        onClick={() => console.log(data.track, playlist)}
+        className='song-img'>
         <button className='song-btnPlay'>
           <HiPlay />
         </button>
@@ -33,7 +35,7 @@ function Song({ data, playlist, cover }) {
           <HiOutlineHeart />
         </p>
       )}
-      <p onClick={() => loadTrack(data, playlist.data)} className='song-title'>
+      <p onClick={() => loadTrack(data.track, playlist)} className='song-title'>
         {name} <br />
         {artists.map((artist) => (
           <span className='song_artistname'> {artist.name}</span>
