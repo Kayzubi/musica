@@ -1,11 +1,26 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { IoIosPlayCircle, IoIosClose } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import MusicContext from '../contexts/MusicContext'
 function CollectionCard({ data, remove }) {
   const { loadTrack } = useContext(MusicContext)
+  const [playlist, setPlaylist] = useState([])
 
   const { id, images, name, tracks, artists, total_tracks } = data
+
+  useEffect(() => {
+    const list = tracks.items.map((item) => {
+      return {
+        id: item.id,
+        track: {
+          ...item,
+          album: { name: name, images: images },
+        },
+      }
+    })
+
+    setPlaylist(list)
+  }, [images, name, tracks])
 
   return (
     <div className='collection__card'>
@@ -19,7 +34,7 @@ function CollectionCard({ data, remove }) {
       </Link>
       <div className='collection__card-details'>
         <button
-          onClick={() => loadTrack(tracks.items[0], tracks.items)}
+          onClick={() => loadTrack(playlist[0].track, playlist)}
           className='collection__card-btn collection-play'>
           <IoIosPlayCircle />
         </button>
