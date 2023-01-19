@@ -52,6 +52,10 @@
   width: 40%;
   color: $grey-dark-3;
 
+  @include sm {
+    width: 80%;
+  }
+
   input {
     background-color: transparent;
     border: none;

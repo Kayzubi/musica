@@ -81,7 +81,7 @@ export const MusicContextProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (screenWidth < 768) {
+    if (screenWidth <= 768) {
       setNavOpen(false)
     } else {
       setNavOpen(true)
