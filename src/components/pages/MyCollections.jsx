@@ -1,14 +1,10 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import MusicContext from '../../contexts/MusicContext'
 import CollectionCard from '../CollectionCard'
 import Spinner from '../shared/Spinner'
 
 function MyCollections() {
   const { myCollection, deleteFromCollection } = useContext(MusicContext)
-
-  useEffect(() => {
-    console.log(myCollection)
-  }, [myCollection])
 
   if (myCollection === undefined) return <Spinner size='large' />
 

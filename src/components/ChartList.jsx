@@ -1,24 +1,9 @@
-import ChartCard from './shared/ChartCard'
-import { useContext, useState, useEffect } from 'react'
+import { useContext } from 'react'
 import MusicContext from '../contexts/MusicContext'
+import ChartCard from './shared/ChartCard'
 import Spinner from './shared/Spinner'
 function ChartList() {
-  const { chartData, setChartData, fetchData } = useContext(MusicContext)
-  const [isLoading, setLoading] = useState(true)
-
-  useEffect(() => {
-    async function getData() {
-      setChartData(
-        await fetchData(
-          `albums/?ids=16ppCNm1KGCgUS0g3iKqh8%2C6BK6S6VtshawDNE1MGT3eK%2C2DNwwAZeVYl3Ld9zTP4zBA%2C7u1jkHWcxmUL7lbNDNyMRY%2C73rKiFhHZatrwJL0B1F6hY`
-        )
-      )
-      setLoading(false)
-    }
-
-    getData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const { chartData, isLoading } = useContext(MusicContext)
 
   return isLoading ? (
     <div className='chart'>
