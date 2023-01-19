@@ -1,7 +1,7 @@
 import AnimatedDiv from '../shared/AnimatedDiv'
-import { HiPlay, HiOutlineViewGridAdd } from 'react-icons/hi'
+import { HiPlay, HiOutlineViewGridAdd, HiArrowLeft } from 'react-icons/hi'
 import { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import MusicContext from '../../contexts/MusicContext'
 import Song from '../shared/Song'
 import Spinner from '../shared/Spinner'
@@ -20,6 +20,12 @@ function Chart() {
   const params = useParams()
   const [isLoading, setLoading] = useState(true)
   const [playlist, setPlaylist] = useState([])
+
+  const navigate = useNavigate()
+
+  const goBack = () => {
+    navigate(-1)
+  }
 
   useEffect(() => {
     async function getChartDetails() {
@@ -52,6 +58,11 @@ function Chart() {
 
   return (
     <AnimatedDiv>
+      <div className='section'>
+        <button onClick={goBack} className='back__btn'>
+          <HiArrowLeft color='#facd66' size={'30px'} />
+        </button>
+      </div>
       <BackgroundImage image={chartDetails.images[0].url} />
       <section className='section section-info'>
         <img src={chartDetails.images[0].url} alt='' className='playlist-img' />

@@ -40,7 +40,6 @@ function Player() {
 
   const handleVolumeChange = (e) => {
     setVolume(Math.round(e.target.value))
-    console.log(e.target.value)
   }
 
   return (

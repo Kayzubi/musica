@@ -12,6 +12,13 @@
   }
 }
 
+.back__btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 .playlist {
   &-img {
     width: 20rem;

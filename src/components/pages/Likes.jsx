@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import MusicContext from '../../contexts/MusicContext'
 import Spinner from '../shared/Spinner'
 import TrackCard from '../shared/TrackCard'
@@ -6,7 +6,21 @@ import TrackCard from '../shared/TrackCard'
 function Likes() {
   const { myLikes } = useContext(MusicContext)
   const data = myLikes
-  const playlist = myLikes?.map((item) => item.data)
+
+  const [playlist, setPlaylist] = useState([])
+
+  useEffect(() => {
+    const list = {
+      items: myLikes?.map((item) => {
+        return {
+          id: item.data.id,
+          track: item.data,
+        }
+      }),
+    }
+
+    setPlaylist(list)
+  }, [myLikes])
 
   if (myLikes === undefined) return <Spinner size='large' />
 

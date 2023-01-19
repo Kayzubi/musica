@@ -18,9 +18,7 @@ function Song({ data, playlist, cover }) {
 
   return (
     <div className='song' id={data.track.id}>
-      <div
-        onClick={() => console.log(data.track, playlist)}
-        className='song-img'>
+      <div onClick={() => loadTrack(data.track, playlist)} className='song-img'>
         <button className='song-btnPlay'>
           <HiPlay />
         </button>
@@ -31,7 +29,7 @@ function Song({ data, playlist, cover }) {
           <HiHeart />
         </p>
       ) : (
-        <p onClick={() => addToLikes(data)} className='song-like'>
+        <p onClick={() => addToLikes(data.track)} className='song-like'>
           <HiOutlineHeart />
         </p>
       )}
