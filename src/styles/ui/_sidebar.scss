@@ -67,4 +67,21 @@
     @include md {
     }
   }
+
+  .btn__close {
+    display: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+
+    @include md {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
 }

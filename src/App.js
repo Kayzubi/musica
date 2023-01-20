@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     let sidebar = document.getElementById('sidebar')
     if (navOpen && screenWidth <= 768) {
-      sidebar.style.width = '80%'
+      sidebar.style.width = '100%'
     } else if (navOpen && screenWidth > 768) {
       sidebar.style.width = '5%'
     } else {

@@ -4,13 +4,21 @@ import {
   IoMdRadio,
   IoIosPerson,
   IoIosLogOut,
+  IoIosClose,
 } from 'react-icons/io'
 import { HiHome } from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import MusicContext from '../contexts/MusicContext'
 
 function Sidebar() {
+  const { toggleNav } = useContext(MusicContext)
+
   return (
     <div className='sidebar' id='sidebar'>
+      <button onClick={toggleNav} className='btn__close'>
+        <IoIosClose size='30px' />
+      </button>
       <div className='sidebar-section'>
         <NavLink end className='sidebar-icon' to='/'>
           <HiHome /> <span className='sidebar-icon__title'>Home</span>
