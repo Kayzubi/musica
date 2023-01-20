@@ -3,11 +3,12 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10rem;
+  height: 15rem;
   background-color: transparent;
   backdrop-filter: blur(10px);
   border-top: 1px solid $grey-dark-3;
   z-index: 999;
+
   .container {
     display: flex;
     gap: 2rem;
@@ -15,6 +16,12 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+
+    @include sm {
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+    }
   }
 
   &__now-playing {
@@ -25,10 +32,18 @@
     &-img {
       width: 5rem;
       border-radius: $base-border-radius * 2;
+
+      @include sm {
+        display: none;
+      }
     }
     &-details {
       display: inline-block;
       overflow: hidden;
+
+      @include sm {
+        text-align: center;
+      }
 
       .title {
         font-weight: 700;
@@ -55,6 +70,10 @@
   &__controls {
     width: 70%;
     text-align: center;
+
+    @include sm {
+      width: 100%;
+    }
   }
 
   &__buttons {
@@ -124,6 +143,10 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    @include md {
+      display: none;
+    }
+
     input[type='range'] {
       -webkit-appearance: none;
       width: 10rem;

@@ -7,7 +7,7 @@ import MusicContext from './contexts/MusicContext'
 import { useContext, useEffect } from 'react'
 
 function App() {
-  const { navOpen, screenWidth } = useContext(MusicContext)
+  const { navOpen, screenWidth, currentTrack } = useContext(MusicContext)
 
   useEffect(() => {
     let sidebar = document.getElementById('sidebar')
