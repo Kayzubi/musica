@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './styles/styles.scss'
+import './styles/css/styles.css'
 import App from './App'
 import { MusicContextProvider } from './contexts/MusicContext'
 
