@@ -21,7 +21,7 @@ function Home() {
   ]
 
   useEffect(() => {
-    screenWidth < 768 && setNavOpen(false)
+    screenWidth <= 768 && setNavOpen(false)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screenWidth])

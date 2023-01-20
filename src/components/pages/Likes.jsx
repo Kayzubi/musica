@@ -25,7 +25,7 @@ function Likes() {
   if (myLikes === undefined) return <Spinner size='large' />
 
   return (
-    <div>
+    <div className='myLikes'>
       {data === undefined || data.length === 0 ? (
         <div className='center'>
           <p>

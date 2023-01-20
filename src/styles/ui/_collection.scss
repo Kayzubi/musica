@@ -90,3 +90,29 @@
     transition: opacity 0.2s;
   }
 }
+
+.myLikes {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // @include xs {
+  //   display: block;
+  // }
+
+  // & > * {
+  //   @include xs {
+  //     display: block;
+  //     margin-bottom: 30px;
+  //   }
+  // }
+}
