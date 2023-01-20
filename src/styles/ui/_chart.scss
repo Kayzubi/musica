@@ -9,6 +9,14 @@
     gap: 2rem;
     align-items: flex-end;
     font-weight: 300;
+
+    @include sm {
+      align-items: center;
+    }
+  }
+
+  @include sm {
+    padding: $base-padding;
   }
 }
 
@@ -23,10 +31,19 @@
   &-img {
     width: 20rem;
     border-radius: $base-border-radius * 5;
+    @include sm {
+      width: 10rem;
+    }
   }
+
   &-name {
     margin-bottom: 1.5rem;
     color: $color-primary-alt;
+
+    @include sm {
+      font-size: 18px;
+      margin-bottom: 1rem;
+    }
   }
 
   &-description,
@@ -38,6 +55,10 @@
   &-buttons {
     margin: 3rem 0 1rem;
     display: flex;
+
+    @include sm {
+      margin: 1rem 0;
+    }
   }
 
   &-btn {
@@ -53,6 +74,10 @@
     cursor: pointer;
     &:not(:last-child) {
       margin-right: 1rem;
+    }
+
+    @include sm {
+      font-size: 10px;
     }
   }
 }
@@ -155,6 +180,7 @@
   position: relative;
   margin-top: 2px;
   margin-right: 3px;
+  font-size: 9px;
 
   &:not(:last-child):after {
     position: absolute;
