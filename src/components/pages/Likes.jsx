@@ -25,7 +25,7 @@ function Likes() {
   if (myLikes === undefined) return <Spinner size='large' />
 
   return (
-    <div className='myLikes'>
+    <div>
       {data === undefined || data.length === 0 ? (
         <div className='center'>
           <p>
@@ -37,9 +37,11 @@ function Likes() {
           </p>
         </div>
       ) : (
-        data.map((song) => {
-          return <TrackCard data={song.data} playlist={playlist} />
-        })
+        <div className='myLikes'>
+          {data.map((song, index) => (
+            <TrackCard data={song.data} playlist={playlist} key={index} />
+          ))}
+        </div>
       )}
     </div>
   )
