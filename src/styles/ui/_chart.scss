@@ -58,6 +58,8 @@
 
     @include sm {
       margin: 1rem 0;
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 
@@ -78,6 +80,7 @@
 
     @include sm {
       font-size: 10px;
+      width: max-content;
     }
   }
 }

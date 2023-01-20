@@ -43,6 +43,7 @@
 
       @include sm {
         text-align: center;
+        margin: auto;
       }
 
       .title {
@@ -108,6 +109,11 @@
 
   &__seek {
     width: 100%;
+
+    @include sm {
+      width: 90%;
+      margin: auto;
+    }
 
     input[type='range'] {
       -webkit-appearance: none;
